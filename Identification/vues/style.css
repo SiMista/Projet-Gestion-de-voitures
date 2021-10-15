@@ -1,0 +1,95 @@
+body
+{
+	text-align: center;
+	width: 50%;
+	margin: auto;
+	background-image: url(https://images.freeimages.com/images/large-previews/a3b/website-rays-background-pattern-1637863.png)
+}
+
+h1
+{
+	font-family: Verdana, Helvetica;
+}
+
+input 
+{
+	border-radius: 4px;
+	height: 30px;
+	width: 70%;
+	display: block;
+	margin: auto;
+	margin-bottom: 20px;
+	font-family: Verdana, Helvetica;
+}
+
+input[type=submit]
+{
+	font-weight: bold;
+	width: 20%;
+	display: inline;
+	font-size: 12px;
+}
+
+span 
+{
+	display: block;
+	font-family: Verdana, Helvetica;
+}
+
+#form-inscription
+{
+	height: 400px;
+}
+
+form
+{
+	background-color: #dddddd;
+	height: 200px;
+	border-radius: 20px; 
+	padding-top: 20px;
+}
+
+footer > p 
+{
+	font-family: Helvetica;
+	font-size: 10px;
+}
+
+.normal > input[type=submit]
+{
+	width: 80%;
+}
+
+.normal
+{
+	height: fit-content;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+	line-height: 40px;
+}
+
+table tr:nth-child(odd) td {
+	background-color: lightgray;
+}
+
+table tr:nth-child(even) td {
+	background-color: gray;
+	color: white;
+}
+
+table tr:nth-child(2) td {
+	background-color: lightslategray;
+	font-size: 16px;
+	color: white;
+	font-weight: bold;
+}
+
+table tr:first-child td {
+	background-color: lightslategray;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
