@@ -8,7 +8,7 @@
 		$num=isset($_POST['num'])?trim($_POST['num']):'';
 		$msg="";
 
-		if (count($_POST)==0) require("vue/utilisateur/ident.tpl");
+		if (count($_POST)==0) require("vue/utilisateur/ident.html");
 		else {
 			
 			require ("./modele/utilisateurBD.php");
@@ -23,19 +23,19 @@
 			}
 			else {
 				$msg = "Utilisateur inconnu !";
-				require("vue/utilisateur/ident.tpl");
+				require("vue/utilisateur/ident.html");
 			}
 		}
 	}
 	function pagep() {
-		require ("vue/utilisateur/pagep.tpl");
+		require ("vue/utilisateur/pagep.html");
 	}
 	
 	function accueil() {
 		require ("modele/contactBD.php");
 		$idn = $_SESSION['profil']['id_nom'];
 		$Contact = contacts($idn);
-		require ("vue/utilisateur/pagep.tpl");
+		require ("vue/utilisateur/pagep.html");
 	}
 	
 	function bye() {
