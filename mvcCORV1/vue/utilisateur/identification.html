@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TP econtact - mvc - page princpal accueil avec liste des contacts</title>
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="./vue/styleCSS/style.css"> 
+		<!-- <script src="script.js"></script> -->
+	</head>
+	<body>
+	
+	<header>
+		<div id="menu">	
+			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+				<div class="container-fluid" >
+					<a href="index.php?controle=utilisateur&action=pagep"><img src='./vue/images/header/voiture.png' id="logo" ></a>
+					
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link active" onclick="Afficher()" href="#" id="connexion">Connexion</a>
+							</li>
+							<script>
+								function Afficher() {
+  									var x = document.getElementById("formulaire");
+ 									if (x.style.display === "block") {
+    									x.style.display = "none";
+  									} else {
+    									x.style.display = "block";
+  									}
+							}
+							</script>
+						</ul>
+					
+				</div>
+			</nav>
+		</div>
+		
+	</header>
+
+	<div id="formInscri" class="col-lg-12 col-md-12 col-sm-12 +col-xs-4">
+		<form action="index.php?controle=inscription&action=identification" method="post">
+            <h1>Inscription</h1>
+			<p>nom : </p>
+			<input name="nom" class="nom"  value="<?php echo $nom ?>"/>
+			<p>prénom : </p>
+			<input name="prenom" class="prenom"  value="<?php echo $prenom ?>"/>
+            <p>email : </p>
+            <input name="email" class="email"  value="<?php echo $email ?>"/>
+            <p>mot de passe : </p>
+            <input name="num" class="num"  value="<?php echo $num ?>"/> <br></br>
+			<input type= "submit" value= "valider" /> 	 
+            
+            
+        </form>
+	</div>
+        
+		
+
+		<footer>
+			<p>© 2021 Vida Locar - All rights reserved</p>
+		</footer>
+	</body>
+</html>
