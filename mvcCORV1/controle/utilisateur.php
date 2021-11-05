@@ -43,6 +43,7 @@
         	require("vue/utilisateur/pagep.html");
 		 } else{
 			inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE);
+			$_SESSION['profil'] = $profil;
 			require("vue/utilisateur/accueil.html");
 		 }
 	}
