@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>TP econtact - mvc - page princpal accueil avec liste des contacts</title>
+		<title>Vida Locar</title>
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="./vue/styleCSS/style.css"> 
@@ -14,11 +14,14 @@
 		<div id="menu">	
 			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
 				<div class="container-fluid" >
-					<a href="index.php?controle=utilisateur&action=pagep"><img src='./vue/images/header/voiture.png' id="logo" ></a>
+					<a href="index.php?controle=utilisateur&action=pagep"><img src='./vue/images/header/logo.png' id="logo" ></a>
 					
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item">
 								<a class="nav-link active" onclick="AfficherConnexion()" href="#" id="connexion">Connexion</a>
+								
+							</li>
+							<li class="nav-item">
 								<a class="nav-link active" onclick="AfficherInscription()" href="#" id="inscription">Inscription</a>
 							</li>
 							<script>
@@ -48,30 +51,29 @@
 				</div>
 			</nav>
 			<div id="formConnex" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4" >
-				<form action="index.php?controle=utilisateur&action=pagep" method="post">
+				<form action="index.php?controle=utilisateur&action=ident" method="post">
 					<a class="fermer" onclick="AfficherConnexion()" href="#" id="connexion">x</a>
-					<h1>Connexion ?</h1>
-					<p>email : </p>
+					<h1>Connexion</h1>
+					<p>Email : </p>
 					<input name="email" class="email"  value="<?php echo $email ?>"/>
-					<p>mot de passe : </p>
+					<p>Mot de passe : </p>
 					<input name="mdp" class="mdp"  value="<?php echo $mdp ?>"/> <br></br>
 					<input type= "submit" value= "se connecter" /> 	 <br></br>
 				</form>
 			</div>
-			<div class="fond"></div>
 			<div id="formInscri" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4">
 				<form action="index.php?controle=utilisateur&action=inscri" method="post">
 					<a class="fermer" onclick="AfficherInscription()" href="#" id="connexion">x</a>
 					<h1>Inscription</h1>
-					<p>nom : </p>
-					<input name="nom" class="nom"  value="<?php echo $nom ?>"/>
-					<p>pseudo : </p>
+					<p>Nom : </p>
+					<input name="nom" class="nom" value="<?php echo $nom ?>"/>
+					<p>Pseudo : </p>
 					<input name="pseudo" class="pseudo"  value="<?php echo $pseudo ?>"/>
-					<p>email : </p>
+					<p>Email : </p>
 					<input name="email" class="email"  value="<?php echo $email ?>"/>
-					<p>mot de passe : </p>
+					<p>Mot de passe : </p>
 					<input name="mdp" class="mdp"  value="<?php echo $mdp ?>"/> <br></br>
-					<input type= "submit" value= "valider" /> 	             
+					<input type= "submit" value= "Valider" /> 	             
 				</form>
 			</div>
 		</div>

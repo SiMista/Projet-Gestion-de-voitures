@@ -3,56 +3,10 @@
 		fonctions-action de gestion des utilisateurs
 	*/
 	
-	function ident () {
-		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; // trim pour enlever les espaces avant et apres
-		$mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
-		$msg="";
-
-		if (count($_POST)==0) require("vue/utilisateur/ident.html");
-		else {
-			
-			require ("./modele/utilisateurBD.php");
-			
-			if (verif_bd($nom, $mdp, $profil)) {
-				//echo ('<br/>PROFIL : <pre>'); var_dump ($profil); echo ('</pre><br/>'); die("ident");
-				
-				//session_start(); //deja fait dans index
-				$_SESSION['profil'] = $profil;
-				$nexturl = "index.php?controle=utilisateur&action=accueil";
-				header ("Location:" . $nexturl);
-			}
-			else {
-				$msg = "Utilisateur inconnu !";
-				require("vue/utilisateur/ident.html");
-			}
-		}
-	}
-
-	function inscri() {
-		require ("./modele/utilisateurBD.php");
+	function ident() {
 		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
 		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
-        $email=isset($_POST['email'])?trim($_POST['email']):'';
-        $mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
-		$idClient = "4";
-		$nomE = "";
-		$adresseE = "";
-		$idClient++;
-		$msg="";
-
-        if (verif_bd($email, $mdp, $profil)){
-            require("vue/utilisateur/identification.html");
-        } else{
-			inscription($nom,$pseudo,$email,$mdp,$idClient,$nomE,$adresseE);
-			require("vue/utilisateur/accueil.html");
-            
-        }
-	}
-
-	function pagep() {
-		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
-		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
-		$email=isset($_POST['email'])?trim($_POST['email']):''; // trim pour enlever les espaces avant et apres
+		$email=isset($_POST['email'])?trim($_POST['email']):'';
 		$mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
 		$msg="";
 
@@ -63,7 +17,6 @@
 			
 			if (verif_bd($email, $mdp, $profil)) {
 				//echo ('<br/>PROFIL : <pre>'); var_dump ($profil); echo ('</pre><br/>'); die("ident");
-				
 				//session_start(); //deja fait dans index
 				$_SESSION['profil'] = $profil;
 				$nexturl = "index.php?controle=utilisateur&action=accueil";
@@ -74,6 +27,24 @@
 				require("vue/utilisateur/pagep.html");
 			}
 		}
+	}
+
+	function inscri() {
+		require ("./modele/utilisateurBD.php");
+		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
+		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
+        $email=isset($_POST['email'])?trim($_POST['email']):'';
+        $mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
+		$nomE = "";
+		$adresseE = "";
+		$msg="";
+
+        if (verif_bd($email, $mdp, $profil)){
+        	require("vue/utilisateur/pagep.html");
+		 } else{
+			inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE);
+			require("vue/utilisateur/accueil.html");
+		 }
 	}
 	
 	function accueil() {

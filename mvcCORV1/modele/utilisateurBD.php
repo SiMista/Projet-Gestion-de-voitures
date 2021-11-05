@@ -36,16 +36,15 @@
 		}
 	}
 
-	function inscription($nom,$pseudo,$email,$mdp,$idClient,$nomE,$adresseE){
+	function inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE){
 		require('modele/connectBD.php'); //$pdo est défini dans ce fichier
-		$sql =('INSERT INTO `utilisateur` (`pseudo`, `nom`, `mdp`, `email`, `idClient`, `nomE`, `adresseE`) VALUES (:pseudo, :nom, :mdp, :email, :idClient, :nomE, :adresseE);');
+		$sql =('INSERT INTO `utilisateur` (`pseudo`, `nom`, `mdp`, `email`, `nomE`, `adresseE`) VALUES (:pseudo, :nom, :mdp, :email, :nomE, :adresseE);');
 			try {
 			$commande = $pdo->prepare($sql);
 			$commande->bindParam(':nom', $nom);
 			$commande->bindParam(':mdp', $mdp);
 			$commande->bindParam(':pseudo', $pseudo);
 			$commande->bindParam(':email', $email);
-			$commande->bindParam(':idClient', $idClient);
 			$commande->bindParam(':nomE', $adresseE);
 			$commande->bindParam(':adresseE', $adresseE);
 			$bool = $commande->execute();

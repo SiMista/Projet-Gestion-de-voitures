@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>TP econtact - mvc </title>
+		<title>Vida Locar</title>
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="./vue/styleCSS/style.css"> 
@@ -14,35 +14,26 @@
 		<div id="menu">	
 			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
 				<div class="container-fluid" >
-					<a href="index.php?controle=utilisateur&action=accueil"><img src='./vue/images/header/voiture.png' id="logo" ></a>
-					
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item">
-								<a class="nav-link active" href="#" id="connexion">Mes réservations</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active" href="index.php?controle=utilisateur&action=mesVehicules" id="connexion">Mes véhicules</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active" href="index.php?controle=utilisateur&action=pagep" id="connexion">Déconnexion</a>
-							</li>
-							
-						</ul>
-					
+					<a href="index.php?controle=utilisateur&action=accueil"><img src='./vue/images/header/logo.png' id="logo" ></a>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="index.php?controle=utilisateur&action=mesVehicules" id="connexion">Mes véhicules 🚗</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="index.php?controle=utilisateur&action=ident" id="connexion">Déconnexion 🚪</a>
+						</li>
+					</ul>	
 				</div>
 			</nav>
 		</div>
 		
 	</header>
-	
-		<div id="main">
-			<?php 
-			echo 'test'
-			?>
-		</div>
 		<div>
 			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
-			<h1 class="nomCo">Bienvenue <?php echo "$pseudo"?></h1>
+			<h1 class="nomCo">Bienvenue <?php echo $pseudo?></h1>
 		</div>
 		<!-- On peut surement utiliser base de données pour factoriser -->
 		<div class="flex-container">
