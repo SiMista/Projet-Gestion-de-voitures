@@ -20,7 +20,7 @@
 							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="index.php?controle=utilisateur&action=mesVehicules" id="connexion">Mes véhicules 🚗</a>
+							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures" id="connexion">Mes voitures 🚗</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=utilisateur&action=ident" id="connexion">Déconnexion 🚪</a>
@@ -31,18 +31,33 @@
 		</div>
 		
 	</header>
-	
-		<div id="main">
-			<?php 
-			echo 'test'
-			?>
-		</div>
 		<div>
 			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
 			<h1 class="nomCo">Bienvenue</h1>
 		</div>
 		<!-- On peut surement utiliser base de données pour factoriser -->
 		
+		<div id ="main"> 
+			<h2> Mes voitures </h2>
+			<?php 	
+			if (isset ($Voitures)) {
+				echo ("<h2 style='color:blue'> Voici vos voiture :</h2>");
+				echo ('<table>');
+				echo ('<tr><th> type </th> <th> nb </th> <th> caract </th></tr>'); 	
+				foreach ($Voitures as $c) {
+					echo "<tr class='contact'>";
+					echo ("<td>" . utf8_encode($c['type']) . "</td>"); 
+					echo ("<td>" . utf8_encode($c['nb']) . "</td>"); 
+					echo ("<td>" . utf8_encode($c['caract']) . "</td>"); 
+					echo "</tr>\n";
+				}
+				echo ('</table>');
+			}
+			else 
+				echo ('Pas de voitures');
+			?>
+			
+		</div>
 
 		<footer>
 			<p>© 2021 Vida Locar - All rights reserved</p>

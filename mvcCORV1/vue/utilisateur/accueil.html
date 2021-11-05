@@ -20,7 +20,7 @@
 							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="index.php?controle=utilisateur&action=mesVehicules" id="connexion">Mes véhicules 🚗</a>
+							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures" id="connexion">Mes voitures 🚗</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=utilisateur&action=ident" id="connexion">Déconnexion 🚪</a>
@@ -33,7 +33,7 @@
 	</header>
 		<div>
 			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
-			<h1 class="nomCo">Bienvenue <?php echo $pseudo=isset($_SESSION['profil']['pseudo'])?trim($_SESSION['profil']['pseudo']):($pseudo); ?></h1>
+			<h1 class="nomCo">Bienvenue <?php echo $pseudo=isset($_SESSION['profil']['pseudo'])?($_SESSION['profil']['pseudo']):($pseudo); ?></h1>
 		</div>
 		<!-- On peut surement utiliser base de données pour factoriser -->
 		<div class="flex-container">
