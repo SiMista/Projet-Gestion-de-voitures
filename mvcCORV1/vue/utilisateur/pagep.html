@@ -18,33 +18,60 @@
 					
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item">
-								<a class="nav-link active" onclick="Afficher()" href="#" id="connexion">Connexion</a>
+								<a class="nav-link active" onclick="AfficherConnexion()" href="#" id="connexion">Connexion</a>
+								<a class="nav-link active" onclick="AfficherInscription()" href="#" id="inscription">Inscription</a>
 							</li>
 							<script>
-								function Afficher() {
-  									var x = document.getElementById("formulaire");
+								function AfficherConnexion() {
+									if(document.getElementById("formInscri").style.display == "block")
+										document.getElementById("formInscri").style.display = "none";
+  									var x = document.getElementById("formConnex");
  									if (x.style.display === "block") {
     									x.style.display = "none";
   									} else {
     									x.style.display = "block";
   									}
-							}
+								}
+								function AfficherInscription() {
+									if(document.getElementById("formConnex").style.display == "block")
+										document.getElementById("formConnex").style.display = "none";
+  									var x = document.getElementById("formInscri");
+ 									if (x.style.display === "block") {
+    									x.style.display = "none";
+  									} else {
+    									x.style.display = "block";
+									}
+								}
 							</script>
 						</ul>
 					
 				</div>
 			</nav>
-			<div class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4" id="formulaire">
+			<div id="formConnex" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4" >
 				<form action="index.php?controle=utilisateur&action=pagep" method="post">
-					<a class="fermer" onclick="Afficher()" href="#" id="connexion">x</a>
+					<a class="fermer" onclick="AfficherConnexion()" href="#" id="connexion">x</a>
 					<h1>Connexion ?</h1>
 					<p>email : </p>
 					<input name="email" class="email"  value="<?php echo $email ?>"/>
 					<p>mot de passe : </p>
 					<input name="mdp" class="mdp"  value="<?php echo $mdp ?>"/> <br></br>
 					<input type= "submit" value= "se connecter" /> 	 <br></br>
-					<p>Pas de compte? <a href="index.php?controle=inscription&action=identification" >Inscrivez-vous</a></p>
-					
+				</form>
+			</div>
+			<div class="fond"></div>
+			<div id="formInscri" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4">
+				<form action="index.php?controle=utilisateur&action=inscri" method="post">
+					<a class="fermer" onclick="AfficherInscription()" href="#" id="connexion">x</a>
+					<h1>Inscription</h1>
+					<p>nom : </p>
+					<input name="nom" class="nom"  value="<?php echo $nom ?>"/>
+					<p>pseudo : </p>
+					<input name="pseudo" class="pseudo"  value="<?php echo $pseudo ?>"/>
+					<p>email : </p>
+					<input name="email" class="email"  value="<?php echo $email ?>"/>
+					<p>mot de passe : </p>
+					<input name="mdp" class="mdp"  value="<?php echo $mdp ?>"/> <br></br>
+					<input type= "submit" value= "valider" /> 	             
 				</form>
 			</div>
 		</div>

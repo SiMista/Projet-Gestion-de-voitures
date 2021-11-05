@@ -27,7 +27,31 @@
 			}
 		}
 	}
+
+	function inscri() {
+		require ("./modele/utilisateurBD.php");
+		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
+		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
+        $email=isset($_POST['email'])?trim($_POST['email']):'';
+        $mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
+		$idClient = "4";
+		$nomE = "";
+		$adresseE = "";
+		$idClient++;
+		$msg="";
+
+        if (verif_bd($email, $mdp, $profil)){
+            require("vue/utilisateur/identification.html");
+        } else{
+			inscription($nom,$pseudo,$email,$mdp,$idClient,$nomE,$adresseE);
+			require("vue/utilisateur/accueil.html");
+            
+        }
+	}
+
 	function pagep() {
+		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
+		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
 		$email=isset($_POST['email'])?trim($_POST['email']):''; // trim pour enlever les espaces avant et apres
 		$mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
 		$msg="";
