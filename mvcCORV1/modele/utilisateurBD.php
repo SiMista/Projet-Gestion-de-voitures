@@ -45,7 +45,7 @@
 			$commande->bindParam(':mdp', $mdp);
 			$commande->bindParam(':pseudo', $pseudo);
 			$commande->bindParam(':email', $email);
-			$commande->bindParam(':nomE', $adresseE);
+			$commande->bindParam(':nomE', $nomE);
 			$commande->bindParam(':adresseE', $adresseE);
 			$bool = $commande->execute();
 			if ($bool) {

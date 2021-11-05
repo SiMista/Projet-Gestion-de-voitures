@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 05 Novembre 2021 à 21:17
+-- Généré le :  Ven 05 Novembre 2021 à 18:54
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `facture` (
   `idFacture` int(11) NOT NULL,
-  `idClient` int(11) NOT NULL,
   `idVoiture` int(11) NOT NULL,
   `dateD` date NOT NULL,
   `dateF` date NOT NULL,
@@ -40,9 +39,9 @@ CREATE TABLE `facture` (
 -- Contenu de la table `facture`
 --
 
-INSERT INTO `facture` (`idFacture`, `idClient`, `idVoiture`, `dateD`, `dateF`, `valeur`, `etatReglement`) VALUES
-(1, 1, 1, '2021-09-01', '2021-09-30', 230.99, 0),
-(2, 2, 2, '2021-10-01', '2021-10-31', 199.5, 1);
+INSERT INTO `facture` (`idFacture`, `idVoiture`, `dateD`, `dateF`, `valeur`, `etatReglement`) VALUES
+(1, 1, '2021-09-01', '2021-09-30', 230.99, 0),
+(2, 2, '2021-10-01', '2021-10-31', 199.5, 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +118,6 @@ INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocati
 --
 ALTER TABLE `facture`
   ADD PRIMARY KEY (`idFacture`),
-  ADD UNIQUE KEY `idClient` (`idClient`),
   ADD KEY `idVoiture` (`idVoiture`);
 
 --
@@ -151,7 +149,7 @@ ALTER TABLE `voiture`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
