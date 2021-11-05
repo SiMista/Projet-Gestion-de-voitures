@@ -29,24 +29,24 @@
 		}
 	}
 
-	function inscri() {
-		require ("./modele/utilisateurBD.php");
-		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
-		$pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
+    function inscri() {
+        require ("./modele/utilisateurBD.php");
+        $nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
+        $pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
         $email=isset($_POST['email'])?trim($_POST['email']):'';
         $mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
-		$nomE = "";
-		$adresseE = "";
-		$msg="";
+        $nomE = "";
+        $adresseE = "";
+        $msg="";
 
         if (verif_bd($email, $mdp, $profil)){
-        	require("vue/utilisateur/pagep.html");
-		 } else{
-			inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE);
-			$_SESSION['profil'] = $profil;
-			require("vue/utilisateur/accueil.html");
-		 }
-	}
+            require("vue/utilisateur/pagep.html");
+         } else{
+            inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE);
+            $_SESSION['profil'] = $profil;
+            require("vue/utilisateur/accueil.html");
+         }
+    }
 	
 	function accueil() {
 		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
