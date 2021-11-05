@@ -5,6 +5,10 @@
 	width: 100%;
 }
 
+h1{
+	color: lightgray;
+}
+
 .flex-container{
 	text-align: center;	
 }

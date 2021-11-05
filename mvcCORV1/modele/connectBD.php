@@ -1,11 +1,11 @@
 <?php
 	//$hostname = "vs-wamp";
 	$hostname = "localhost";	
-	$base= "bd_voitures";
+	$base= "bd_voiture";
 	//$loginBD= "econtact";	
 	$loginBD= "root";		
 	//$passBD="econtact";
-	$passBD="root";
+	$passBD="";
 	//$pdo = null;
 	try {
 		// DSN (Data Source Name)pour se connecter à MySQL
