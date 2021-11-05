@@ -36,38 +36,18 @@
 		}
 	}
 
-	function verif_email($email, &$profil) {
-		require('modele/connectBD.php');
-		$sql="SELECT * FROM `utilisateur` WHERE email=:email";
-		try {
-			$commande = $pdo->prepare($sql);
-			$commande->bindParam(':email', $email);
-			$bool = $commande->execute();
-			if ($bool) {
-				$resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
-			}
-		}
-		catch (PDOException $e) {
-			echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
-			die();
-		}
-		if (count($resultat) == 0) {
-			return false; 
-		}
-		else {
-			return true;
-		}
-	}
-
-	function inscription($nom,$mdp,$pseudo,$email){
+	function inscription($nom,$pseudo,$email,$mdp,$idClient,$nomE,$adresseE){
 		require('modele/connectBD.php'); //$pdo est défini dans ce fichier
-		$sql =('INSERT INTO `utilisateur` (`nom`, `mdp`, `pseudo`, `email`) VALUES (:nom, :mdp, :pseudo, :email);');
+		$sql =('INSERT INTO `utilisateur` (`pseudo`, `nom`, `mdp`, `email`, `idClient`, `nomE`, `adresseE`) VALUES (:pseudo, :nom, :mdp, :email, :idClient, :nomE, :adresseE);');
 			try {
 			$commande = $pdo->prepare($sql);
 			$commande->bindParam(':nom', $nom);
 			$commande->bindParam(':mdp', $mdp);
 			$commande->bindParam(':pseudo', $pseudo);
 			$commande->bindParam(':email', $email);
+			$commande->bindParam(':idClient', $idClient);
+			$commande->bindParam(':nomE', $adresseE);
+			$commande->bindParam(':adresseE', $adresseE);
 			$bool = $commande->execute();
 			if ($bool) {
 				$resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
