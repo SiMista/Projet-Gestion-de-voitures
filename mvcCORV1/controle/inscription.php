@@ -11,14 +11,21 @@
 		$msg="";
 
         require ("./modele/utilisateurBD.php");
-        if (verif_bd($email, $mdp, $profil)){
-            require("vue/utilisateur/identification.html");
-        } else{
-			inscription($nom,$pseudo,$email,$mdp);
-			echo "inscription réussi";
-            
+		if(!verif_bd($email, $mdp, $profil)){
+        	if (!verif_email($email, $profil)){
+				inscription($nom,$mdp,$pseudo,$email);
+				$_SESSION['profil'] = $profil;
+				$nexturl = "index.php?controle=utilisateur&action=accueil";
+				header ("Location:" . $nexturl);
+			} else{
+				echo "Adresse mail déjà utilisée";
+
+				require("vue/utilisateur/pagep.html");
+			}
         }
-        
+		else{
+			require("vue/utilisateur/pagep.html");
+		}
 	}
     function pagep() {
         $email=isset($_POST['email'])?trim($_POST['email']):'';

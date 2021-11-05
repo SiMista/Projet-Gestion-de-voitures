@@ -36,9 +36,32 @@
 		}
 	}
 
-	function inscription($nom,$prenom,$email,$mdp){
+	function verif_email($email, &$profil) {
+		require('modele/connectBD.php');
+		$sql="SELECT * FROM `utilisateur` WHERE email=:email";
+		try {
+			$commande = $pdo->prepare($sql);
+			$commande->bindParam(':email', $email);
+			$bool = $commande->execute();
+			if ($bool) {
+				$resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
+			}
+		}
+		catch (PDOException $e) {
+			echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+			die();
+		}
+		if (count($resultat) == 0) {
+			return false; 
+		}
+		else {
+			return true;
+		}
+	}
+
+	function inscription($nom,$mdp,$pseudo,$email){
 		require('modele/connectBD.php'); //$pdo est défini dans ce fichier
-		$sql =('INSERT INTO `utilisateur` (`pseudo`, `nom`, `mdp`, `email`) VALUES (:pseudo, :nom, :mdp, :email);');
+		$sql =('INSERT INTO `utilisateur` (`nom`, `mdp`, `pseudo`, `email`) VALUES (:nom, :mdp, :pseudo, :email);');
 			try {
 			$commande = $pdo->prepare($sql);
 			$commande->bindParam(':nom', $nom);
