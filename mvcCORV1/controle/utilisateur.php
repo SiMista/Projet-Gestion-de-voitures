@@ -27,19 +27,19 @@
 			}
 		}
 	}
+
 	function pagep() {
+		$nom=isset($_POST['nom'])?trim($_POST['nom']):''; 
+        $pseudo=isset($_POST['pseudo'])?trim($_POST['pseudo']):'';
 		$email=isset($_POST['email'])?trim($_POST['email']):''; // trim pour enlever les espaces avant et apres
 		$mdp=isset($_POST['mdp'])?trim($_POST['mdp']):'';
 		$msg="";
 
 		if (count($_POST)==0) require("vue/utilisateur/pagep.html");
 		else {
-			
 			require ("./modele/utilisateurBD.php");
-			
 			if (verif_bd($email, $mdp, $profil)) {
 				//echo ('<br/>PROFIL : <pre>'); var_dump ($profil); echo ('</pre><br/>'); die("ident");
-				
 				//session_start(); //deja fait dans index
 				$_SESSION['profil'] = $profil;
 				$nexturl = "index.php?controle=utilisateur&action=accueil";
