@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 05 Novembre 2021 à 00:37
+-- Généré le :  Ven 05 Novembre 2021 à 14:49
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -121,6 +121,13 @@ ALTER TABLE `facture`
   ADD PRIMARY KEY (`idFacture`),
   ADD KEY `idVoiture` (`idVoiture`),
   ADD KEY `idEntreprise` (`idEntreprise`);
+
+--
+-- Index pour la table `loueur`
+--
+ALTER TABLE `loueur`
+  ADD PRIMARY KEY (`idClient`),
+  ADD UNIQUE KEY `idClient` (`idClient`),
 
 --
 -- Index pour la table `utilisateur`
