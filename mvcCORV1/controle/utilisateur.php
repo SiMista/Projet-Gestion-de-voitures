@@ -47,6 +47,7 @@ function inscri()
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
 		$_SESSION['profil']=$profil;
 		$_SESSION['pseudo']=$pseudo;
+		setcookie("cookieUser", $profil['idClient'], time()+36000);
 		$nexturl = "index.php?controle=utilisateur&action=accueil";
 		header("Location:" . $nexturl);
 
@@ -75,4 +76,17 @@ function mesVoitures(){
 	require ("modele/voitureBD.php") ;
 	$Voitures = voitures();
 	require ("vue/utilisateur/mesVehicules.html");
+}
+
+function louer(){
+	$Voitures = isset($_POST['checkboxVoiture']) ? ($_POST['checkboxVoiture']) : '';;
+	if(empty($Voitures)) {
+		echo("Vous n'avez pris aucune voiture ! C'est bien dommage...");
+	} 
+	else {
+		require ("modele/voitureBD.php") ;
+		for($i=0; $i < count($Voitures); $i++) {
+			vendreVoiture($Voitures[$i]);
+		}
+	}
 }

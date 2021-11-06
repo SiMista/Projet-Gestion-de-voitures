@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="./vue/styleCSS/style.css">
-	<!-- <script src="script.js"></script> -->
 </head>
 
 <body>
@@ -41,36 +40,42 @@
 		</h1>
 	</div>
 	<div> 
-		<div> 
-			<?php
-			if (isset ($VoituresDispo)) {
-				echo 
-				'<div class="flex-container">
-					<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
-						foreach ($VoituresDispo as $c) {
-							$obj = json_decode($c['caract']);
-							echo '
-							<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-								<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
-								<p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
-								<p id="txt1">Nombre de véhicules disponibles : '. utf8_encode($c['nb']) . '</p>
-								<p id="txt1">Catégorie : '. $obj->categorie . '</p>
-								<p id="txt1">Moteur : '. $obj->moteur . '</p>
-								<p id="txt1">Vitesse : '. $obj->vitesse . '</p>
-								<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
-							</div>
-							';
-						}
-					echo '
+		<form action="index.php?controle=utilisateur&action=louer" method="post">
+			<div> 
+				<?php
+				if (isset ($VoituresDispo)) {
+					echo 
+					'<div class="flex-container">
+						<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
+							foreach ($VoituresDispo as $c) {
+								$obj = json_decode($c['caract']);
+								echo '
+								<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+									<label class="btn btn-danger form-check-label">
+										<input type="checkbox" name="checkboxVoiture[]" class="form-check-input" value="'. utf8_encode($c['idVoiture']) .'" autocomplete="off"> Checkbox 2
+									</label>
+									<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
+									<p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
+									<p id="txt1">Nombre de véhicules disponibles : '. utf8_encode($c['nb']) . '</p>
+									<p id="txt1">Catégorie : '. $obj->categorie . '</p>
+									<p id="txt1">Moteur : '. $obj->moteur . '</p>
+									<p id="txt1">Vitesse : '. $obj->vitesse . '</p>
+									<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
+								</div>
+								';
+							}
+						echo '
+						</div>
 					</div>
-				</div>
-				';
-			}
-			else {
-				echo '<div> Pas de voitures </div>';
-			}
-			?>
-		</div>
+					';
+				}
+				else {
+					echo '<div> Pas de voitures </div>';
+				}
+				?>
+				<input type="submit" class="btn btn-warning" name="formSubmit" value="Louer" />
+			</div>
+		</form>
 	</div>
 
 	<footer>
