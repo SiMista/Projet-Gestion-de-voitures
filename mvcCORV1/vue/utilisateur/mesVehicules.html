@@ -21,9 +21,6 @@
 							id="logo"></a>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures"
 								id="connexion">Mes voitures 🚗</a>
 						</li>
@@ -57,7 +54,8 @@
 								<p id="txt1">Moteur : '. $obj->moteur . '</p>
 								<p id="txt1">Vitesse : '. $obj->vitesse . '</p>
 								<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
-
+								<p id="txt1">Date de début de location : '. utf8_encode($c['dateD']) . '</p>
+								<p id="txt1">Date de fin de location : '. utf8_encode($c['dateF']) . '</p>
 							</div>
 							';
 						}
