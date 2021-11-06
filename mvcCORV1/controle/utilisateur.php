@@ -49,6 +49,12 @@ function inscri()
 	}
 }
 
+function deconnexion()
+{
+	$_SESSION['profil']="";
+	header("Location:index.php");
+}
+
 function accueil()
 {
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
