@@ -94,6 +94,7 @@
 	<div>
 		<img id="img-fond" src="./vue/images/carbackground.jpg" class="img-fluid" alt="Responsive image">
 	</div>
+	<!-- On peut surement utiliser base de données pour factoriser -->
 	<div> 
 		<?php
 		if (isset ($VoituresDispo)) {
@@ -120,9 +121,10 @@
 			';
 		}
 		else 
-			echo '<div> Pas de voitures </div>';
+			echo ('Pas de voitures');
 		?>
 	</div>
+
 
 	<footer>
 		<p>© 2021 Vida Locar - All rights reserved</p>
