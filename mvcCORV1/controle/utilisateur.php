@@ -39,9 +39,11 @@ function inscri()
 	require("./modele/utilisateurBD.php");
 	if (!verif_email($email, $profil)) {
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
+		$_SESSION['profil']=$profil;
+		$_SESSION['pseudo']=$pseudo;
 		$nexturl = "index.php?controle=utilisateur&action=accueil";
 		header("Location:" . $nexturl);
-		require("vue/utilisateur/accueil.html");
+
 	} else {
 		$_SESSION['msgIns'] = "Adresse mail déjà prise";
 		$nexturl = "index.php?controle=voiture&action=voituresDisponible";
