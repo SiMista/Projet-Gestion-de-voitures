@@ -3,6 +3,11 @@
 		fonctions-action de gestion des utilisateurs
 	*/
 
+function voituresDisponible(){
+	require ("modele/voitureBD.php") ;
+	return $VoituresDispo = voituresDispo();
+}
+
 function ident()
 {
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
@@ -10,7 +15,7 @@ function ident()
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
 	$_SESSION['msgCo'] = "";
-
+	$VoituresDispo = voituresDisponible();
 	if (count($_POST) == 0) require("vue/utilisateur/pagep.html");
 	else {
 		require("./modele/utilisateurBD.php");
@@ -21,7 +26,7 @@ function ident()
 			header("Location:" . $nexturl);
 		} else {
 			$_SESSION['msgCo'] = "Utilisateur inconnu !";
-			$nexturl = "index.php?controle=voiture&action=voituresDisponible";
+			$nexturl = "index.php";
 			header("Location:" . $nexturl);
 		}
 	}
@@ -47,7 +52,7 @@ function inscri()
 
 	} else {
 		$_SESSION['msgIns'] = "Adresse mail déjà prise";
-		$nexturl = "index.php?controle=voiture&action=voituresDisponible";
+		$nexturl = "index.php";
 		header("Location:" . $nexturl);
 	}
 }
@@ -62,6 +67,7 @@ function accueil()
 {
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
+	$VoituresDispo = voituresDisponible();
 	require("vue/utilisateur/accueil.html");
 }
 
