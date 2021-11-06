@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Ven 05 Novembre 2021 à 21:17
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.18
+-- Hôte : 127.0.0.1
+-- Généré le : sam. 06 nov. 2021 à 15:54
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `bd_voitures`
+-- Base de données : `bd_voitures`
 --
 
 -- --------------------------------------------------------
@@ -37,11 +38,11 @@ CREATE TABLE `facture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `facture`
+-- Déchargement des données de la table `facture`
 --
 
 INSERT INTO `facture` (`idFacture`, `idClient`, `idVoiture`, `dateD`, `dateF`, `valeur`, `etatReglement`) VALUES
-(1, 1, 1, '2021-09-01', '2021-09-30', 230.99, 0),
+(1, 2, 1, '2021-09-01', '2021-09-30', 230.99, 0),
 (2, 2, 2, '2021-10-01', '2021-10-31', 199.5, 1);
 
 -- --------------------------------------------------------
@@ -52,14 +53,7 @@ INSERT INTO `facture` (`idFacture`, `idClient`, `idVoiture`, `dateD`, `dateF`, `
 
 CREATE TABLE `loueur` (
   `idClient` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `loueur`
---
-
-INSERT INTO `loueur` (`idClient`) VALUES
-(1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -78,7 +72,7 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `utilisateur`
+-- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`idClient`, `nom`, `pseudo`, `mdp`, `email`, `nomE`, `adresseE`) VALUES
@@ -102,16 +96,16 @@ CREATE TABLE `voiture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `voiture`
+-- Déchargement des données de la table `voiture`
 --
 
 INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'diesel\', \'vitesse\':\'manuelle\', \'nb places\' :\'7\'}', 'zafira.jpg', 'disponible'),
-(2, 'Renault Espace', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'essence\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'espace.jpg', 'en_revision'),
-(3, 'Tesla Model S', 1, '{\'categorie\' : \'polyvalent\', \'moteur\' :\'electrique\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'teslaS', 'disponible');
+(1, 'Opel Zafira', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'diesel\', \'vitesse\':\'manuelle\', \'nb places\' :\'7\'}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'essence\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'espace.png', 'en_revision'),
+(3, 'Tesla Model S', 1, '{\'categorie\' : \'polyvalent\', \'moteur\' :\'electrique\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'teslaS.png', 'disponible');
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -119,7 +113,7 @@ INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocati
 --
 ALTER TABLE `facture`
   ADD PRIMARY KEY (`idFacture`),
-  ADD UNIQUE KEY `idClient` (`idClient`),
+  ADD KEY `idClient` (`idClient`),
   ADD KEY `idVoiture` (`idVoiture`);
 
 --
@@ -127,9 +121,7 @@ ALTER TABLE `facture`
 --
 ALTER TABLE `loueur`
   ADD PRIMARY KEY (`idClient`),
-  ADD UNIQUE KEY `idClient` (`idClient`),
-  ADD UNIQUE KEY `idClient_2` (`idClient`),
-  ADD UNIQUE KEY `idClient_3` (`idClient`);
+  ADD KEY `idClient` (`idClient`);
 
 --
 -- Index pour la table `utilisateur`
@@ -144,14 +136,16 @@ ALTER TABLE `voiture`
   ADD PRIMARY KEY (`idVoiture`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
