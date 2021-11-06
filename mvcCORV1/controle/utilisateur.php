@@ -47,6 +47,7 @@ function inscri()
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
 		$_SESSION['profil']=$profil;
 		$_SESSION['pseudo']=$pseudo;
+		setcookie("cookieUser", $profil['idClient'], time()+36000);
 		$nexturl = "index.php?controle=utilisateur&action=accueil";
 		header("Location:" . $nexturl);
 
