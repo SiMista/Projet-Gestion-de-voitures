@@ -24,7 +24,7 @@ function ident()
 			header("Location:" . $nexturl);
 		} else {
 			$msg = "Utilisateur inconnu !";
-			$nexturl = "index.php?controle=voiture&action=voituresDisponibles";
+			$nexturl = "index.php?controle=voiture&action=voituresDisponible";
 			header("Location:" . $nexturl);
 		}
 	}
@@ -47,7 +47,7 @@ function inscri()
 		require("vue/utilisateur/accueil.html");
 	} else {
 		$msg = "Adresse mail déjà prise";
-		$nexturl = "index.php?controle=voiture&action=voituresDisponibles";
+		$nexturl = "index.php?controle=voiture&action=voituresDisponible";
 		header("Location:" . $nexturl);
 	}
 }
