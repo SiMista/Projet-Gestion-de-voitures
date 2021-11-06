@@ -71,26 +71,8 @@ function accueil()
 	require("vue/utilisateur/accueil.html");
 }
 
-function mesVehicules()
-{
-	require("vue/utilisateur/mesVehicules.html");
-}
-
-function bye()
-{
-	echo ("<h2>Au revoir M. ou Mdme " . $_SESSION['profil']['nom'] . "</h2>");
-	session_destroy();
-}
-
-function ajout_u()
-{
-	echo ("ajout_u ::");
-}
-function maj_u()
-{
-	echo ("maj_u ::");
-}
-function destr_u()
-{
-	echo ("destr_u ::");
+function mesVoitures(){
+	require ("modele/voitureBD.php") ;
+	$Voitures = voitures();
+	require ("vue/utilisateur/mesVehicules.html");
 }
