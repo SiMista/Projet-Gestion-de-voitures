@@ -77,3 +77,16 @@ function mesVoitures(){
 	$Voitures = voitures();
 	require ("vue/utilisateur/mesVehicules.html");
 }
+
+function louer(){
+	$Voitures = isset($_POST['checkboxVoiture']) ? ($_POST['checkboxVoiture']) : '';;
+	if(empty($Voitures)) {
+		echo("Vous n'avez pris aucune voiture ! C'est bien dommage...");
+	} 
+	else {
+		require ("modele/voitureBD.php") ;
+		for($i=0; $i < count($Voitures); $i++) {
+			vendreVoiture($Voitures[$i]);
+		}
+	}
+}
