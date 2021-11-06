@@ -21,9 +21,6 @@
 							id="logo"></a>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures"
 								id="connexion">Mes voitures 🚗</a>
 						</li>
@@ -43,34 +40,35 @@
 			<?php echo $_SESSION['pseudo']; ?>
 		</h1>
 	</div>
-	<!-- On peut surement utiliser base de données pour factoriser -->
-	<div class="flex-container">
-		<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center">
-			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<img id="zoom" src="./vue/images/fiat500.png" style="max-height:200px" class="img-fluid"
-					alt="Responsive image">
-				<p id="txt1">Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par
-					Antonin Compagny</p>
+	<div> 
+		<?php
+		if (isset ($VoituresDispo)) {
+			echo 
+			'<div class="flex-container">
+				<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
+					foreach ($VoituresDispo as $c) {
+						$obj = json_decode($c['caract']);
+						echo '
+						<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+							<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
+							<p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
+							<p id="txt1">Nombre de véhicules disponibles : '. utf8_encode($c['nb']) . '</p>
+							<p id="txt1">Catégorie : '. $obj->categorie . '</p>
+							<p id="txt1">Moteur : '. $obj->moteur . '</p>
+							<p id="txt1">Vitesse : '. $obj->vitesse . '</p>
+							<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
+						</div>
+						';
+					}
+				echo '
+				</div>
 			</div>
-			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<img id="zoom" src="./vue/images/audirs4.png" style="max-height:200px" class="img-fluid"
-					alt="Responsive image">
-				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
-					Compagny</p>
-			</div>
-			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<img id="zoom" src="./vue/images/208.png" style="max-height:200px" class="img-fluid"
-					alt="Responsive image">
-				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
-					Compagny</p>
-			</div>
-			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<img id="zoom" src="./vue/images/toyotayaris.png" style="max-height:200px" class="img-fluid"
-					alt="Responsive image">
-				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
-					Compagny</p>
-			</div>
-		</div>
+			';
+		}
+		else {
+			echo '<div> Pas de voitures </div>';
+		}
+		?>
 	</div>
 
 	<footer>
