@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 06 nov. 2021 à 16:05
+-- Généré le : sam. 06 nov. 2021 à 16:38
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -107,9 +107,9 @@ CREATE TABLE `voiture` (
 --
 
 INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'diesel\', \'vitesse\':\'manuelle\', \'nb places\' :\'7\'}', 'zafira.png', 'disponible'),
-(2, 'Renault Espace', 1, '{\'categorie\' : \'SUV\', \'moteur\' :\'essence\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'espace.png', 'en_revision'),
-(3, 'Tesla Model S', 1, '{\'categorie\' : \'polyvalent\', \'moteur\' :\'electrique\', \'vitesse\':\'automatique\', \'nb places\' :\'5\'}', 'teslaS.png', 'disponible');
+(1, 'Opel Zafira', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nb places\" :\"7\"}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nb places\" :\"5\"}', 'espace.png', 'en_revision'),
+(3, 'Tesla Model S', 1, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nb places\" :\"5\"}', 'teslaS.png', 'disponible');
 
 --
 -- Index pour les tables déchargées
