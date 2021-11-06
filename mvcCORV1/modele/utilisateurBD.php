@@ -35,7 +35,7 @@
 			return true;
 		}
 	}
-
+	
 	function inscription($nom,$pseudo,$email,$mdp,$nomE,$adresseE){
         require('modele/connectBD.php'); //$pdo est défini dans ce fichier
         $sql =('INSERT INTO `utilisateur` (`pseudo`, `nom`, `mdp`, `email`, `nomE`, `adresseE`) VALUES (:pseudo, :nom, :mdp, :email, :nomE, :adresseE);');

@@ -1,64 +1,81 @@
 ﻿<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Vida Locar</title>
-		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link rel="stylesheet" href="./vue/styleCSS/style.css"> 
-		<!-- <script src="script.js"></script> -->
-	</head>
-	<body>
-	
+
+<head>
+	<meta charset="utf-8">
+	<title>Vida Locar</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="./vue/styleCSS/style.css">
+	<!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+
 	<header>
-		<div id="menu">	
+		<div id="menu">
 			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-				<div class="container-fluid" >
-					<a href="index.php?controle=utilisateur&action=accueil"><img src='./vue/images/header/logo.png' id="logo" ></a>
+				<div class="container-fluid">
+					<a href="index.php?controle=utilisateur&action=accueil"><img src='./vue/images/header/logo.png'
+							id="logo"></a>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
 							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures" id="connexion">Mes voitures 🚗</a>
+							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures"
+								id="connexion">Mes voitures 🚗</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="index.php?controle=utilisateur&action=ident" id="connexion">Déconnexion 🚪</a>
+							<a class="nav-link active" href="index.php?controle=utilisateur&action=ident"
+								id="connexion">Déconnexion 🚪</a>
 						</li>
-					</ul>	
+					</ul>
 				</div>
 			</nav>
 		</div>
-		
+
 	</header>
-		<div>
-			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
-			<h1 class="nomCo">Bienvenue <?php echo $_SESSION['profil']['pseudo'] ?></h1>
-		</div>
-		<!-- On peut surement utiliser base de données pour factoriser -->
-		<div class="flex-container">
-			<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" >
-				<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">	
-					<img id="zoom" src="./vue/images/fiat500.png" style="max-height:200px" class="img-fluid" alt="Responsive image">
-					<p id="txt1">Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin Compagny</p>
-				</div>
-				<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-					<img id="zoom" src="./vue/images/audirs4.png" style="max-height:200px" class="img-fluid" alt="Responsive image">
-					<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin Compagny</p>
-				</div>
-				<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-					<img id="zoom" src="./vue/images/208.png" style="max-height:200px" class="img-fluid" alt="Responsive image">
-					<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin Compagny</p>
-				</div>
-				<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-					<img id="zoom" src="./vue/images/toyotayaris.png" style="max-height:200px" class="img-fluid" alt="Responsive image">
-					<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin Compagny</p>
-				</div>
+	<div>
+		<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
+		<h1 class="nomCo">Bienvenue
+			<?php echo $pseudo=isset($_SESSION['profil']['pseudo'])?trim($_SESSION['profil']['pseudo']):($pseudo); ?>
+		</h1>
+	</div>
+	<!-- On peut surement utiliser base de données pour factoriser -->
+	<div class="flex-container">
+		<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center">
+			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<img id="zoom" src="./vue/images/fiat500.png" style="max-height:200px" class="img-fluid"
+					alt="Responsive image">
+				<p id="txt1">Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par
+					Antonin Compagny</p>
+			</div>
+			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<img id="zoom" src="./vue/images/audirs4.png" style="max-height:200px" class="img-fluid"
+					alt="Responsive image">
+				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
+					Compagny</p>
+			</div>
+			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<img id="zoom" src="./vue/images/208.png" style="max-height:200px" class="img-fluid"
+					alt="Responsive image">
+				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
+					Compagny</p>
+			</div>
+			<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<img id="zoom" src="./vue/images/toyotayaris.png" style="max-height:200px" class="img-fluid"
+					alt="Responsive image">
+				<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin
+					Compagny</p>
 			</div>
 		</div>
+	</div>
 
-		<footer>
-			<p>© 2021 Vida Locar - All rights reserved</p>
-		</footer>
-	</body>
+	<footer>
+		<p>© 2021 Vida Locar - All rights reserved</p>
+	</footer>
+</body>
+
 </html>

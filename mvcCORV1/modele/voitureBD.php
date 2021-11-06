@@ -21,4 +21,25 @@
 		}
 		return $Voitures;
 	}
+
+	function voituresDispo(){
+        require ("modele/connectBD.php") ; 
+        $sql="SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
+        WHERE v.etatLocation = 'disponible'";
+        try {
+            $commande = $pdo->prepare($sql);
+            $bool = $commande->execute();
+            $Voitures= array();
+            if ($bool) {
+                while ($c = $commande->fetch()) {
+                    $Voitures[] = $c; //stockage dans $C des enregistrements sélectionnés
+                }
+            }
+        }
+        catch (PDOException $e) {
+            echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+            die(); // On arrête tout.
+        }
+        return $Voitures;
+    }
 ?>
