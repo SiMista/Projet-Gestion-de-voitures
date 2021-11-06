@@ -16,7 +16,7 @@ function ident()
 		require("./modele/utilisateurBD.php");
 		if (verif_bd($email, $mdp, $profil)) {
 			$_SESSION['profil'] = $profil;
-			$_SESSION['pseudo'] = $profil['pseudo'];
+			$_SESSION['pseudo']=$pseudo;
 			$nexturl = "index.php?controle=utilisateur&action=accueil";
 			header("Location:" . $nexturl);
 		} else {

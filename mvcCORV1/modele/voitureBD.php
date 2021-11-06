@@ -1,7 +1,7 @@
 <?php
 	function voitures() {
 		require ("modele/connectBD.php") ; 
-		$sql="SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF FROM facture f, voiture v
+		$sql="SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation  FROM facture f, voiture v
 		WHERE f.idClient=:idC AND f.idVoiture = v.idVoiture
         LIMIT 0,30";
 		try {

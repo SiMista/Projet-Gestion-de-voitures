@@ -21,6 +21,9 @@
 							id="logo"></a>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
+							<a class="nav-link active" href="#" id="connexion">Mes réservations 🔑</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=voiture&action=mesVoitures"
 								id="connexion">Mes voitures 🚗</a>
 						</li>
@@ -47,14 +50,15 @@
 							echo '							
 							<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">	
 								<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
-								<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
-								<p id="txt1">Date de début de location : '. utf8_encode($c['dateD']) . '</p>
-								<p id="txt1">Date de fin de location : '. utf8_encode($c['dateF']) . '</p>
+								<p id="txt1">'. utf8_encode($c['type']) . '</p>
+								<p id="txt1">'. utf8_encode($c['nb']) . '</p>
+								<p id="txt1">'. utf8_encode($c['caract']) . '</p>
 							</div>
 							';
 						}
 					echo '
 					</div>
+				</div>
 				';
 			}
 			else 
