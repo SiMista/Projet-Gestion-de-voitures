@@ -107,9 +107,9 @@ CREATE TABLE `voiture` (
 --
 
 INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nb places\" :\"7\"}', 'zafira.png', 'disponible'),
-(2, 'Renault Espace', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nb places\" :\"5\"}', 'espace.png', 'en_revision'),
-(3, 'Tesla Model S', 1, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nb places\" :\"5\"}', 'teslaS.png', 'disponible');
+(1, 'Opel Zafira', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'en_revision'),
+(3, 'Tesla Model S', 1, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
 
 --
 -- Index pour les tables déchargées
