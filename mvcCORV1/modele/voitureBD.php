@@ -43,7 +43,23 @@
         return $Voitures;
     }
 
-    function vendreVoiture(){
-        require ("modele/connectBD.php") ; 
+    function vendreVoiture($idV){
+        require ("modele/connectBD.php") ;
+        $sql=" UPDATE voiture SET nb = (SELECT v.nb FROM voiture v
+        WHERE v.idVoiture = $idV) - 1 WHERE idVoiture = $idV";
+        try {
+            $commande = $pdo->prepare($sql);
+            $bool = $commande->execute();
+            $Voitures= array();
+            if ($bool) {
+                while ($c = $commande->fetch()) {
+                    $Voitures[] = $c; //stockage dans $C des enregistrements sélectionnés
+                }
+            }
+        }
+        catch (PDOException $e) {
+            echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+            die(); // On arrête tout.
+        }
     }
 ?>

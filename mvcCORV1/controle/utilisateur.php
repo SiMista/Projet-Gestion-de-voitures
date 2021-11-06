@@ -88,5 +88,7 @@ function louer(){
 		for($i=0; $i < count($Voitures); $i++) {
 			vendreVoiture($Voitures[$i]);
 		}
+		$nexturl = "index.php?controle=utilisateur&action=accueil";
+		header("Location:" . $nexturl);
 	}
 }
