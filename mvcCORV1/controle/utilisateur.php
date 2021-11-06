@@ -34,10 +34,9 @@ function inscri()
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
 	$nomE = "";
 	$adresseE = "";
-	$_SESSION['msgIns'] =  "";
+	$_SESSION['msgIns'] = "";
 
 	require("./modele/utilisateurBD.php");
-
 	if (!verif_email($email, $profil)) {
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
 		$nexturl = "index.php?controle=utilisateur&action=accueil";
@@ -56,6 +55,7 @@ function accueil()
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	require("vue/utilisateur/accueil.html");
 }
+
 function mesVehicules()
 {
 	require("vue/utilisateur/mesVehicules.html");
