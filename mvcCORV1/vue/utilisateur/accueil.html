@@ -33,7 +33,7 @@
 	</header>
 		<div>
 			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
-			<h1 class="nomCo">Bienvenue <?php echo $pseudo=isset($_SESSION['profil']['pseudo'])?($_SESSION['profil']['pseudo']):($pseudo); ?></h1>
+			<h1 class="nomCo">Bienvenue <?php echo $_SESSION['profil']['pseudo'] ?></h1>
 		</div>
 		<!-- On peut surement utiliser base de données pour factoriser -->
 		<div class="flex-container">
@@ -55,7 +55,6 @@
 					<p>Louez cette bête de guerre incroyable, garantie satisfait ou satistait! <br>Louée par Antonin Compagny</p>
 				</div>
 			</div>
-			
 		</div>
 
 		<footer>

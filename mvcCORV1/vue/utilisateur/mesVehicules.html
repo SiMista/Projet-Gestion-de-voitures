@@ -29,34 +29,35 @@
 				</div>
 			</nav>
 		</div>
-		
 	</header>
 		<div>
 			<img id="img-fond" src="./vue/images/carback.jpg" class="img-fluid" alt="Responsive image">
-			<h1 class="nomCo">Bienvenue</h1>
+			<h1 class="nomCo">Mes voitures</h1>
 		</div>
-		<!-- On peut surement utiliser base de données pour factoriser -->
-		
-		<div id ="main"> 
-			<h2> Mes voitures </h2>
+		<div> 
 			<?php 	
 			if (isset ($Voitures)) {
-				echo ("<h2 style='color:blue'> Voici vos voiture :</h2>");
-				echo ('<table>');
-				echo ('<tr><th> type </th> <th> nb </th> <th> caract </th></tr>'); 	
-				foreach ($Voitures as $c) {
-					echo "<tr class='contact'>";
-					echo ("<td>" . utf8_encode($c['type']) . "</td>"); 
-					echo ("<td>" . utf8_encode($c['nb']) . "</td>"); 
-					echo ("<td>" . utf8_encode($c['caract']) . "</td>"); 
-					echo "</tr>\n";
-				}
-				echo ('</table>');
+				echo 
+				'<div class="flex-container">
+					<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
+						foreach ($Voitures as $c) {
+							echo '							
+							<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">	
+								<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
+								<p id="txt1">'. utf8_encode($c['type']) . '</p>
+								<p id="txt1">'. utf8_encode($c['nb']) . '</p>
+								<p id="txt1">'. utf8_encode($c['caract']) . '</p>
+							</div>
+							';
+						}
+					echo '
+					</div>
+				</div>
+				';
 			}
 			else 
 				echo ('Pas de voitures');
-			?>
-			
+			?>			
 		</div>
 
 		<footer>
