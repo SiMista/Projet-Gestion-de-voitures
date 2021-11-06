@@ -9,7 +9,7 @@ function ident()
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
-	$msg = "";
+	$_SESSION['msg'] = "";
 
 	if (count($_POST) == 0) require("vue/utilisateur/pagep.html");
 	else {
@@ -23,7 +23,7 @@ function ident()
 			$nexturl = "index.php?controle=utilisateur&action=accueil";
 			header("Location:" . $nexturl);
 		} else {
-			$msg = "Utilisateur inconnu !";
+			$_SESSION['msg'] = "Utilisateur inconnu !";
 			$nexturl = "index.php?controle=voiture&action=voituresDisponible";
 			header("Location:" . $nexturl);
 		}
@@ -36,17 +36,18 @@ function inscri()
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
-	$nomE= "";
-	$adresseE ="";
-	$msg = "";
+	$nomE = "";
+	$adresseE = "";
+	$_SESSION['msg'] =  "";
 
 	require("./modele/utilisateurBD.php");
 	if (!verif_bd($email, $mdp, $profil)) {
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
-		$_SESSION['profil'] = $profil;
+		$nexturl = "index.php?controle=utilisateur&action=accueil";
+		header("Location:" . $nexturl);
 		require("vue/utilisateur/accueil.html");
 	} else {
-		$msg = "Adresse mail déjà prise";
+		$_SESSION['msg'] = "Adresse mail déjà prise";
 		$nexturl = "index.php?controle=voiture&action=voituresDisponible";
 		header("Location:" . $nexturl);
 	}

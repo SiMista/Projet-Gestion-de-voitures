@@ -60,7 +60,7 @@
 					<a class="fermer" onclick="AfficherConnexion()" href="#" id="connexion">x</a>
 					<h1>Connexion</h1>
 					<p>
-						<?php echo $msg; $msg=''?>
+						<?php echo $_SESSION['msg']; $_SESSION['msg']=''?>
 					</p>
 					<p>Email : </p>
 					<input name="email" class="email" value="" />
@@ -74,7 +74,7 @@
 					<a class="fermer" onclick="AfficherInscription()" href="#" id="connexion">x</a>
 					<h1>Inscription</h1>
 					<p>
-						<?php echo $msg; $msg=''?>
+						<?php echo $_SESSION['msg']; $_SESSION['msg']=''?>
 					</p>
 					<p>Nom : </p>
 					<input name="nom" class="nom" value="" />
