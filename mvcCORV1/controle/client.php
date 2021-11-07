@@ -1,16 +1,16 @@
 <?php
 
-function voituresDisponible(){
-    require ("modele/clientBD.php") ;
-    return $VoituresDispo = voituresDispo();
-}
-
 function accueil()
 {
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$VoituresDispo = voituresDisponible();
 	require("vue/client/accueilClient.html");
+}
+
+function voituresDisponible(){
+    require ("modele/clientBD.php") ;
+    return $VoituresDispo = voituresDispo();
 }
 
 function mesVoitures(){

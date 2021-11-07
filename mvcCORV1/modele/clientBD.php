@@ -1,10 +1,10 @@
 <?php
+
 function voitures()
 {
     require("modele/connectBD.php");
     $sql = "SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF, f.valeur  FROM facture f, voiture v
-		WHERE f.idClient=:idC AND f.idVoiture = v.idVoiture
-        LIMIT 0,30";
+		WHERE f.idClient=:idC AND f.idVoiture = v.idVoiture";
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idC', $_SESSION['profil']['idClient']);
