@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 06 nov. 2021 à 16:38
+-- Généré le : dim. 07 nov. 2021 à 01:18
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `facture` (
   `idClient` int(11) NOT NULL,
   `idVoiture` int(11) NOT NULL,
   `dateD` date NOT NULL,
-  `dateF` date,
+  `dateF` date DEFAULT NULL,
   `valeur` double NOT NULL,
   `etatReglement` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -85,7 +85,11 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`idClient`, `nom`, `pseudo`, `mdp`, `email`, `nomE`, `adresseE`) VALUES
 (1, 'Simeon', 'SiMista', 'Jojo', 'sisilamif@gmail.com', 'Sixt', 'sixt@gmail.com'),
 (2, 'Jules', 'Julio', 'Laylow', 'julio@hotmail.fr', 'Hertz', 'Hertz@hotmail.fr'),
-(3, 'Leo', 'Leolio', 'BigDrip', 'leocha@gmail.com', 'RentalCars', 'rental@gmail.com');
+(3, 'Leo', 'Leolio', 'BigDrip', 'leocha@gmail.com', 'RentalCars', 'rental@gmail.com'),
+(10, 'Berger', 'b', 'b', 'b', '', ''),
+(11, 'khki', 'kikhk', 'kihki', 'hikihkh', '', ''),
+(12, 'dfggdr', 'gdrgrgd', 'grdg', 'grdg', '', ''),
+(13, 'dzqdzq', 'dzqdqzdzq', 'zqdqzd', 'pon@qdzq', '', '');
 
 -- --------------------------------------------------------
 
@@ -107,9 +111,9 @@ CREATE TABLE `voiture` (
 --
 
 INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
-(2, 'Renault Espace', 1, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'en_revision'),
-(3, 'Tesla Model S', 1, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
+(1, 'Opel Zafira', 5, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 20, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'en_revision'),
+(3, 'Tesla Model S', 15, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
 
 --
 -- Index pour les tables déchargées
@@ -147,10 +151,22 @@ ALTER TABLE `voiture`
 --
 
 --
+-- AUTO_INCREMENT pour la table `facture`
+--
+ALTER TABLE `facture`
+  MODIFY `idFacture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `voiture`
+--
+ALTER TABLE `voiture`
+  MODIFY `idVoiture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

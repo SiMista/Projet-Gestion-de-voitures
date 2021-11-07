@@ -26,7 +26,9 @@ function louer(){
 	} 
 	else {
 		require ("modele/voitureBD.php") ;
+        require("loueur.php");
 		for($i=0; $i < count($Voitures); $i++) {
+            creerFacture($Voitures[$i]);
 			louerVoiture($Voitures[$i]);
 		}
 		$nexturl = "index.php?controle=client&action=accueil";
