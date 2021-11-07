@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 07 nov. 2021 à 01:18
+-- Généré le : dim. 07 nov. 2021 à 15:07
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `facture` (
   `dateD` date NOT NULL,
   `dateF` date DEFAULT NULL,
   `valeur` double NOT NULL,
-  `etatReglement` tinyint(1) NOT NULL
+  `etatReglement` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -42,8 +42,9 @@ CREATE TABLE `facture` (
 --
 
 INSERT INTO `facture` (`idFacture`, `idClient`, `idVoiture`, `dateD`, `dateF`, `valeur`, `etatReglement`) VALUES
-(1, 2, 1, '2021-09-01', '2021-09-30', 230.99, 0),
-(2, 2, 2, '2021-10-01', '2021-10-31', 199.5, 1);
+(12, 2, 3, '2021-11-07', '2021-11-30', 687.7, 0),
+(13, 2, 1, '2021-11-07', '2021-11-30', 1035, 0),
+(14, 2, 2, '2021-11-07', '2021-11-30', 864.8, 0);
 
 -- --------------------------------------------------------
 
@@ -100,6 +101,7 @@ INSERT INTO `utilisateur` (`idClient`, `nom`, `pseudo`, `mdp`, `email`, `nomE`, 
 CREATE TABLE `voiture` (
   `idVoiture` int(11) NOT NULL,
   `type` varchar(40) NOT NULL,
+  `prix` double NOT NULL,
   `nb` int(10) NOT NULL,
   `caract` varchar(300) NOT NULL,
   `photo` varchar(40) NOT NULL,
@@ -110,10 +112,10 @@ CREATE TABLE `voiture` (
 -- Déchargement des données de la table `voiture`
 --
 
-INSERT INTO `voiture` (`idVoiture`, `type`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 5, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
-(2, 'Renault Espace', 20, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'en_revision'),
-(3, 'Tesla Model S', 15, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
+INSERT INTO `voiture` (`idVoiture`, `type`, `prix`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
+(1, 'Opel Zafira', 45, 66, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 37.6, 19, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'disponible'),
+(3, 'Tesla Model S', 29.9, 10, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
 
 --
 -- Index pour les tables déchargées
@@ -154,7 +156,7 @@ ALTER TABLE `voiture`
 -- AUTO_INCREMENT pour la table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `idFacture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idFacture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
