@@ -33,10 +33,6 @@
                                 id="item">Nouvelle voiture 🚙</a>
                         </li>
 						<li class="nav-item">
-							<a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
-								id="item">Nouvelle voiture 🚙</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=utilisateur&action=deconnexion"
 								id="connexion">Déconnexion 🚪</a>
 						</li>
@@ -55,7 +51,7 @@
         <div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <form action="index.php?controle=loueur&action=getfactures" method="post">
-                    <p>Entrez le nom d'un client</p> <input name="nom" class="nom" value="" required/>
+                    <h2>Entrez le nom d'un client :</h2> <input name="nom" class="nom" value="" required/>
                     <input type="submit" value="OK"/>  
                 </form>
             </div>
