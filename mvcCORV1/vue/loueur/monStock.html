@@ -26,6 +26,10 @@
 								id="item">Mon stock 🔑</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
+								id="connexion">Nouvelle voiture 🚙</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=utilisateur&action=deconnexion"
 								id="deconnexion">Déconnexion 🚪</a>
 						</li>
@@ -53,7 +57,7 @@
 									<button type="submit" name="btnRetirer" class="btn btn-danger btn-sm" value="'. utf8_encode($c['idVoiture']) .'">-</button>
 								</form>
                                 <img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
-                                <p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
+                                <p id="txt1">Modèle : '. utf8_encode($c['typeV']) . '</p>
 								<p id="txt1">Prix par jour : '. utf8_encode($c['prix']) . '€</p>
 								<p id="txt1">Quantité : '. utf8_encode($c['nb']) . '</p>
                                 <p id="txt1">Catégorie : '. $obj->categorie . '</p>

@@ -91,7 +91,6 @@
 				</form>
 			</div>
 		</div>
-
 	</header>
 
 	<div>
@@ -101,7 +100,7 @@
 	<div> 
 		<?php
 		if (isset ($VoituresDispo)) {
-			echo 
+			echo
 			'<div class="flex-container">
 				<div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > ';
 					foreach ($VoituresDispo as $c) {
@@ -109,7 +108,7 @@
 						echo '
 						<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 							<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
-							<p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
+							<p id="txt1">Modèle : '. ($c['typeV']) . '</p>
 							<p id="txt1">Nombre de véhicules disponibles : '. utf8_encode($c['nb']) . '</p>
 							<p id="txt1">Catégorie : '. $obj->categorie . '</p>
 							<p id="txt1">Moteur : '. $obj->moteur . '</p>

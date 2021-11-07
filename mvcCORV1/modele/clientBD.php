@@ -3,7 +3,7 @@
 function voitures()
 {
     require("modele/connectBD.php");
-    $sql = "SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF, f.valeur  FROM facture f, voiture v
+    $sql = "SELECT v.typeV, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF, f.valeur  FROM facture f, voiture v
 		WHERE f.idClient=:idC AND f.idVoiture = v.idVoiture";
     try {
         $commande = $pdo->prepare($sql);
@@ -25,7 +25,7 @@ function voitures()
 function voituresDispo()
 {
     require("modele/connectBD.php");
-    $sql = "SELECT v.idVoiture, v.type, v.prix, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
+    $sql = "SELECT v.idVoiture, v.typeV, v.prix, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
         WHERE v.etatLocation = 'disponible' AND v.nb > 0";
     try {
         $commande = $pdo->prepare($sql);
@@ -74,11 +74,11 @@ function calculerDateFin($dateD) {
         $dateF = $dateF['year'] . '-' . $dateF['month'] . '-30';
     } else {
         $array = array(4, 6, 8, 10, 12);
-        if (in_array($date['month'], $array)) {
+        if (in_array($dateF['month'], $array)) {
             $dateF = $dateF['year'] . '-' . $dateF['month'] . '-31';
         } else {
-            if ($date['month'] == 2) {
-                if ($date['year'] % 4 == 0) {
+            if ($dateF['month'] == 2) {
+                if ($dateF['year'] % 4 == 0) {
                     $dateF = $dateF['year'] . '-' . $dateF['month'] . '-29';
                 } else {
                     $dateF = $dateF['year'] . '-' . $dateF['month'] . '-28';

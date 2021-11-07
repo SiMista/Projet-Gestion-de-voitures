@@ -25,6 +25,10 @@
 								id="item">Mon stock 🔑</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
+								id="connexion">Nouvelle voiture 🚙</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=utilisateur&action=deconnexion"
 								id="deconnexion">Déconnexion 🚪</a>
 						</li>
@@ -53,10 +57,11 @@
 								echo '
 								<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 									<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
-									<p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
+									<p id="txt1">Modèle : '. utf8_encode($c['typeV']) . '</p>
 									<p id="txt1">Valeur de la location : '. utf8_encode($c['valeur']) . '€</p>
-									<p id="txt1">Date début : '. utf8_encode($c['dateD']) . '</p>
-									<p id="txt1">Date fin : '. utf8_encode($c['dateF']) . '</p>
+									<p id="txt1">Nom du loueur: '. utf8_encode($c['nom']) . '</p>
+									<p id="txt1">Date début : '. date("d/m/Y", strtotime($c['dateD'])) . '</p>
+									<p id="txt1">Date fin : '. date("d/m/Y", strtotime($c['dateF'])) . '</p>
 									<p id="txt1">Catégorie : '. $obj->categorie . '</p>
 									<p id="txt1">Moteur : '. $obj->moteur . '</p>
 									<p id="txt1">Vitesse : '. $obj->vitesse . '</p>
