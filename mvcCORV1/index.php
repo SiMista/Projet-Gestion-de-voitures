@@ -2,7 +2,7 @@
     session_start ();
 
     if ((count($_GET)!=0) && !(isset($_GET['controle']) && isset ($_GET['action'])))
-    require ('./vue/erreur404.tpl'); //cas d'un appel à index.php avec des paramètres incorrects
+    require ('./vue/erreur404.html'); //cas d'un appel à index.php avec des paramètres incorrects
 
     else {
         if ((! isset($_SESSION['profil'])) || count($_GET)==0)    {
