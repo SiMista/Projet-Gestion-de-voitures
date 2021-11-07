@@ -43,7 +43,11 @@
         return $Voitures;
     }
 
-    function vendreVoiture($idV){
+    function achatVoiture($idV){
+
+    }
+
+    function louerVoiture($idV){
         require ("modele/connectBD.php") ;
         $sql=" UPDATE voiture SET nb = (SELECT v.nb FROM voiture v
         WHERE v.idVoiture = $idV) - 1 WHERE idVoiture = $idV";

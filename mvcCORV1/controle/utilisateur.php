@@ -3,10 +3,7 @@
 		fonctions-action de gestion des utilisateurs
 	*/
 
-function voituresDisponible(){
-	require ("modele/voitureBD.php") ;
-	return $VoituresDispo = voituresDispo();
-}
+
 
 function ident()
 {
@@ -15,6 +12,7 @@ function ident()
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
 	$_SESSION['msgCo'] = "";
+	require("client.php");
 	$VoituresDispo = voituresDisponible();
 	if (count($_POST) == 0) require("vue/utilisateur/pagep.html");
 	else {
@@ -22,7 +20,7 @@ function ident()
 		if (verif_bd($email, $mdp, $profil)) {
 			$_SESSION['profil'] = $profil;
 			$_SESSION['pseudo']=$profil['pseudo'];
-			$nexturl = "index.php?controle=utilisateur&action=accueil";
+			$nexturl = "index.php?controle=client&action=accueil";
 			header("Location:" . $nexturl);
 		} else {
 			$_SESSION['msgCo'] = "Utilisateur inconnu !";
@@ -48,7 +46,7 @@ function inscri()
 		$_SESSION['profil']=$profil;
 		$_SESSION['pseudo']=$pseudo;
 		setcookie("cookieUser", $profil['idClient'], time()+36000);
-		$nexturl = "index.php?controle=utilisateur&action=accueil";
+		$nexturl = "index.php?controle=client&action=accueil";
 		header("Location:" . $nexturl);
 
 	} else {
@@ -63,32 +61,4 @@ function deconnexion()
 	$_SESSION['profil']="";
 	header("Location:index.php");
 }
-
-function accueil()
-{
-	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
-	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
-	$VoituresDispo = voituresDisponible();
-	require("vue/utilisateur/accueil.html");
-}
-
-function mesVoitures(){
-	require ("modele/voitureBD.php") ;
-	$Voitures = voitures();
-	require ("vue/utilisateur/mesVehicules.html");
-}
-
-function louer(){
-	$Voitures = isset($_POST['checkboxVoiture']) ? ($_POST['checkboxVoiture']) : '';;
-	if(empty($Voitures)) {
-		echo("Vous n'avez pris aucune voiture ! C'est bien dommage...");
-	} 
-	else {
-		require ("modele/voitureBD.php") ;
-		for($i=0; $i < count($Voitures); $i++) {
-			vendreVoiture($Voitures[$i]);
-		}
-		$nexturl = "index.php?controle=utilisateur&action=accueil";
-		header("Location:" . $nexturl);
-	}
-}
+?>

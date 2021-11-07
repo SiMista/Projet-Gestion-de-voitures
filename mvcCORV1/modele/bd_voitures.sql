@@ -32,7 +32,7 @@ CREATE TABLE `facture` (
   `idClient` int(11) NOT NULL,
   `idVoiture` int(11) NOT NULL,
   `dateD` date NOT NULL,
-  `dateF` date NOT NULL,
+  `dateF` date,
   `valeur` double NOT NULL,
   `etatReglement` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
