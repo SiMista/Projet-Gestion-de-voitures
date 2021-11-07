@@ -10,13 +10,13 @@ function accueil()
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$VoituresDispo = voituresDisponible();
-	require("vue/utilisateur/accueil.html");
+	require("vue/client/accueil.html");
 }
 
 function mesVoitures(){
 	require ("modele/clientBD.php") ;
 	$Voitures = voitures();
-	require ("vue/utilisateur/mesVehicules.html");
+	require ("vue/client/mesVehicules.html");
 }
 
 function louer(){
