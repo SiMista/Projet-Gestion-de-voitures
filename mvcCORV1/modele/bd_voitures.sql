@@ -100,7 +100,7 @@ INSERT INTO `utilisateur` (`idClient`, `nom`, `pseudo`, `mdp`, `email`, `nomE`, 
 
 CREATE TABLE `voiture` (
   `idVoiture` int(11) NOT NULL,
-  `type` varchar(40) NOT NULL,
+  `typeV` varchar(40) NOT NULL,
   `prix` double NOT NULL,
   `nb` int(10) NOT NULL,
   `caract` varchar(300) NOT NULL,
