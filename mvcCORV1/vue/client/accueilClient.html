@@ -40,7 +40,7 @@
 		</h1>
 	</div>
 	<div>
-		<form action="index.php?controle=client&action=louer" method="post">
+		<form action="index.php?controle=client&action=louer" method="post" style="margin: 0%;">
 			<div>
 
 				<?php
@@ -82,7 +82,10 @@
 					echo '<div> Pas de voitures </div>';
 				}
 				?>
-				<input type="submit" class="btn btn-warning" name="formSubmit" value="LOUER" />
+				<div style="position: inherit;" class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center">
+					<input type="submit"  class="btn btn-warning" name="formSubmit" value="LOUER" />
+				</div>
+				
 			</div>
 		</form>
 	</div>
