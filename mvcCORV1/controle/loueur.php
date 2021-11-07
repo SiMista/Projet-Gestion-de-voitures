@@ -19,4 +19,18 @@ function monStock(){
 	require ("vue/loueur/monStock.html");
 }
 
+function gererStock() {
+	require ("modele/loueurBD.php") ;
+	if (isset($_POST['btnAjouter'])) {
+		$idV = $_POST['btnAjouter'];
+		ajouter($idV);
+	}
+	else {
+		$idV = $_POST['btnRetirer'];
+		retirer($idV);
+	}
+	$nexturl = "index.php?controle=loueur&action=monStock";
+	header("Location:" . $nexturl);
+}
+
 ?>

@@ -47,7 +47,7 @@
 	function stock() {
 		require("modele/connectBD.php");
 		$sql = "SELECT v.idVoiture, v.type, v.prix, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
-			WHERE v.etatLocation = 'disponible' OR v.etatLocation = 'en_revision' AND v.nb != 0";
+			WHERE (v.etatLocation = 'disponible' OR v.etatLocation = 'en_revision') AND v.nb > 0";
 		try {
 			$commande = $pdo->prepare($sql);
 			$bool = $commande->execute();
@@ -62,6 +62,34 @@
 			die(); // On arrête tout.
 		}
 		return $Voitures;
+	}
+
+	function ajouter($idV)
+	{
+		require("modele/connectBD.php");
+		$sql = " UPDATE voiture SET nb = (SELECT v.nb FROM voiture v
+			WHERE v.idVoiture = $idV) + 1 WHERE idVoiture = $idV";
+		try {
+			$commande = $pdo->prepare($sql);
+			$bool = $commande->execute();
+		} catch (PDOException $e) {
+			echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+			die(); // On arrête tout.
+		}
+	}
+
+	function retirer($idV)
+	{
+		require("modele/connectBD.php");
+		$sql = " UPDATE voiture SET nb = (SELECT v.nb FROM voiture v
+			WHERE v.idVoiture = $idV) - 1 WHERE idVoiture = $idV";
+		try {
+			$commande = $pdo->prepare($sql);
+			$bool = $commande->execute();
+		} catch (PDOException $e) {
+			echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+			die(); // On arrête tout.
+		}
 	}
 
 ?>
