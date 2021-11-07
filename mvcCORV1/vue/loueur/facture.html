@@ -15,7 +15,7 @@
 
 	<header>
 		<div id="menu">
-			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+			<nav id="nav" class="navbar navbar-expand-lg navbar-light">
 				<div class="container-fluid">
 					<a href="index.php?controle=loueur&action=accueil"><img src='./vue/images/header/logo.png'
 							id="logo"></a>
@@ -26,8 +26,12 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=loueur&action=monStock"
-								id="connexion">Mon stock 🔑</a>
+								id="item">Mon stock 🔑</a>
 						</li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
+                                id="item">Nouvelle voiture 🚙</a>
+                        </li>
 						<li class="nav-item">
 							<a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
 								id="item">Nouvelle voiture 🚙</a>
@@ -47,8 +51,8 @@
 		<h1 class="nomCo"> Mes factures
 		</h1>
 	</div>
-    
-        <div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > 
+    <div class="flex-container">
+        <div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > 
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                 <form action="index.php?controle=loueur&action=getfactures" method="post">
                     <p>Entrez le nom d'un client</p> <input name="nom" class="nom" value="" required/>
@@ -64,7 +68,7 @@
                 foreach ($factures as $c) {
                     echo '
                     <div class="flex-container">
-						<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > 
+						<div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > 
                             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <table style="width: 100%; height: 50vh;">
                                     <tr>
@@ -89,6 +93,7 @@
 		</form>
 
 	</div>
+</div>
 	<footer>
 		<p>© 2021 Vida Locar - All rights reserved</p>
 	</footer>
