@@ -7,7 +7,7 @@
     else {
         if ((! isset($_SESSION['profil'])) || count($_GET)==0)    {
             $controle = "utilisateur";   //cas d'une personne non authentifiée
-            $action = "ident";        //ou d'un appel à index.php sans paramètre
+            $action = "pagep";        //ou d'un appel à index.php sans paramètre
         }
         else {
             if (isset($_GET['controle']) && isset ($_GET['action'])) {
