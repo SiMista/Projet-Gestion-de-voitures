@@ -50,12 +50,13 @@ function inscri()
 	require("./modele/utilisateurBD.php");
 	if (!verif_email($email, $profil)) {
 		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
-		$_SESSION['profil']=$profil;
-		$_SESSION['pseudo']=$pseudo;
-		setcookie("cookieUser", $profil['idClient'], time()+36000);
-		$nexturl = "index.php?controle=client&action=accueil";
-		header("Location:" . $nexturl);
-
+		if (verif_bd($email, $mdp, $profil)) {
+			$_SESSION['pseudo']=$pseudo;
+			$_SESSION['profil']=$profil;
+			setcookie("cookieUser", $profil['idClient'], time()+36000);
+			$nexturl = "index.php?controle=client&action=accueil";
+			header("Location:" . $nexturl);
+		}
 	} else {
 		$_SESSION['msgIns'] = "Adresse mail déjà prise";
 		$nexturl = "index.php";

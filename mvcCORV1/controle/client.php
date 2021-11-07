@@ -24,7 +24,8 @@ function louer(){
 	if(!empty($Voitures)) {
 		require ("modele/clientBD.php") ;
 		for($i=0; $i < count($Voitures); $i++) {
-            creerFacture($Voitures[$i]);
+			$dateF = isset($_POST['dateF']) ? ($_POST['dateF']) : '';;
+            creerFacture($Voitures[$i], $dateF);
 			louerVoiture($Voitures[$i]);
 		}
 	}

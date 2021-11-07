@@ -66,31 +66,37 @@ function calculerValeur($idV, $dateD, $dateF){
     return $valeur;
 }
 
-function creerFacture($idV)
+function calculerDateFin($dateD) {
+    $dateF = date_parse($dateD);
+    $array = array(1, 3, 5, 7, 9, 11);
+
+    if (in_array($dateF['month'], $array)) {
+        $dateF = $dateF['year'] . '-' . $dateF['month'] . '-30';
+    } else {
+        $array = array(4, 6, 8, 10, 12);
+        if (in_array($date['month'], $array)) {
+            $dateF = $dateF['year'] . '-' . $dateF['month'] . '-31';
+        } else {
+            if ($date['month'] == 2) {
+                if ($date['year'] % 4 == 0) {
+                    $dateF = $dateF['year'] . '-' . $dateF['month'] . '-29';
+                } else {
+                    $dateF = $dateF['year'] . '-' . $dateF['month'] . '-28';
+                }
+            }
+        }
+    }
+    return $dateF;
+}
+
+function creerFacture($idV, $dateF)
 {
     require("modele/connectBD.php");
     $sql = ('INSERT INTO `facture` (`idClient`, `idVoiture`, `valeur`, `dateD`, `dateF`) VALUES (:idClient, :idVoiture, :valeur, :dateD, :dateF)');
     try {
         $dateD = date('y-m-d');
-        $dateF = date_parse($dateD);
-        $array = array(1, 3, 5, 7, 9, 11);
-
-        if (in_array($dateF['month'], $array)) {
-            $dateF = $dateF['year'] . '-' . $dateF['month'] . '-30';
-        } else {
-            $array = array(4, 6, 8, 10, 12);
-            if (in_array($date['month'], $array)) {
-                $dateF = $dateF['year'] . '-' . $dateF['month'] . '-31';
-            } else {
-                if ($date['month'] == 2) {
-                    if ($date['year'] % 4 == 0) {
-                        $dateF = $dateF['year'] . '-' . $dateF['month'] . '-29';
-                    } else {
-                        $dateF = $dateF['year'] . '-' . $dateF['month'] . '-28';
-                    }
-                }
-            }
-        }
+        if ($dateF == '')
+            $dateF = calculerDateFin($dateD);
         $valeur = calculerValeur($idV, $dateD, $dateF);
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idClient', $_SESSION['profil']['idClient']);
