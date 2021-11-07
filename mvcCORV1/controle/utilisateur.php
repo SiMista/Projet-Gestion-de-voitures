@@ -3,7 +3,11 @@
 		fonctions-action de gestion des utilisateurs
 	*/
 
-
+function pagep(){
+	require("client.php");
+	$VoituresDispo = voituresDisponible();
+	require("vue/utilisateur/pagep.html");
+}
 
 function ident()
 {
@@ -12,9 +16,7 @@ function ident()
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
 	$_SESSION['msgCo'] = "";
-	require("client.php");
-	$VoituresDispo = voituresDisponible();
-	if (count($_POST) == 0) require("vue/utilisateur/pagep.html");
+	if (count($_POST) === 0) pagep();
 	else {
 		require("./modele/utilisateurBD.php");
 		if (verif_bd($email, $mdp, $profil)) {
@@ -59,6 +61,7 @@ function inscri()
 function deconnexion()
 {
 	$_SESSION['profil']="";
-	header("Location:index.php");
+	$nexturl = "index.php";
+	header("Location:" . $nexturl);
 }
 ?>
