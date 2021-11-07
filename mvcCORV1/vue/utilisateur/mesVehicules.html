@@ -54,17 +54,49 @@
                                 <p id="txt1">Moteur : '. $obj->moteur . '</p>
                                 <p id="txt1">Vitesse : '. $obj->vitesse . '</p>
                                 <p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
-                                <p id="txt1">Date de début de location : '. utf8_encode($c['dateD']) . '</p>
-                                <p id="txt1">Date de fin de location : '. utf8_encode($c['dateF']) . '</p>
-                            </div>
-                            ';
-                        }
-                    echo '
-                    </div>
-                </div>
-                ';
-            }
-            else 
+                                <p id="txt1">Date de début de location : '. date("d/m/Y", strtotime($c['dateD'])) . '</p>';
+								if ($c['dateF'] === null){
+									$date = date_parse($c['dateD']);
+									$array=array(1,3,5,7,9,11);
+									if(in_array($date['month'],$array)){
+										$array=array(1,3,5,7,9,);
+										if(in_array($date['month'],$array))
+											$date['month'] = '0'.$date['month'] ;
+										$dateF = '30/' . $date['month']. '/' .  $date['year'];
+									}
+									else {
+										$array=array(4,6,8,10,12);
+										if(in_array($date['month'],$array)){
+											$array=array(4,6,8);
+											if(in_array($date['month'],$array))
+												$date['month'] = '0'.$date['month'] ;
+											$dateF = '31/' . $date['month']. '/' .  $date['year'];
+										}
+										else {
+											if($date['month'] == 2){
+												if($date['year']%4 == 0){
+													$dateF = '29/0' . $date['month']. '/' .  $date['year'];
+												}
+												else{
+													$dateF = '28/0' . $date['month']. '/' .  $date['year'];
+												}
+											}
+										}
+									}
+									echo '<p id="txt1">Date de fin de location : ' . $dateF . '</p>';
+								}
+								else{
+								echo '<p id="txt1">Date de fin de location : ' . date("d/m/Y", strtotime($c['dateF'])) . '</p>';
+								}
+							echo '</div>
+							';
+						}
+						echo 
+					'</div>
+				</div>
+				';
+			}
+			else 
                 echo ('Pas de voitures');
 		?>
 	</div>
