@@ -50,11 +50,10 @@
 							foreach ($VoituresDispo as $c) {
 								$obj = json_decode($c['caract']);
 								$dateD = date('Y-m-d');
-								$id = 1;
 								echo '
 								<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 									<label class="btn btn-danger form-check-label">
-										<input type="checkbox" id="checkbox'.$id.'" name="checkboxVoiture[]" class="form-check-input" value="'. utf8_encode($c['idVoiture']) .'" autocomplete="off">Sélectionner on
+										<input type="checkbox" name="checkboxVoiture[]" class="form-check-input" value="'. utf8_encode($c['idVoiture']) .'" autocomplete="off">Sélectionner
 									</label>			
 									<label>Date de début de réservation :
 										<input type="date" name="dateD" min="' . $dateD . '" value="' . $dateD . '" disabled>
@@ -72,7 +71,6 @@
 									<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
 								</div>
 								';
-								$id = $id + 1;
 							}
 						echo '
 						</div>
