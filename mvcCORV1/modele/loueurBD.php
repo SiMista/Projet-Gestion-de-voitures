@@ -134,3 +134,27 @@ function retirer($idV)
 		die(); // On arrête tout.
 	}
 }
+	function facture($nomC){
+		require("modele/connectBD.php");
+		$sql = "SELECT SUM(f.valeur) AS valeur, u.nom  FROM facture f, utilisateur u WHERE f.idClient = u.idClient	AND (SELECT MONTH(f.DateD) = :date) AND u.nom = :nomC";
+		try {
+			$dateJ = date('Y-m-d') ;
+			$date = date_parse($dateJ);
+			$commande = $pdo->prepare($sql);
+			$commande->bindParam(':nomC',  $nomC);
+			$commande->bindParam(':date',  $date['month']);
+			$bool = $commande->execute();
+			$factures = array();
+			if ($bool) {
+				while ($c = $commande->fetch()) {
+					$factures[] = $c; //stockage dans $C des enregistrements sélectionnés
+				}
+			}
+		} catch (PDOException $e) {
+			echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+			die(); // On arrête tout.
+		}
+		return $factures;
+	}
+	
+?>

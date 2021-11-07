@@ -32,5 +32,9 @@ function louer(){
 	$nexturl = "index.php?controle=client&action=accueil";
 	header("Location:" . $nexturl);
 }
-
+function Clients(){
+	require ("modele/clientBD.php") ;
+	$user = mesClients();
+	return $user;
+}
 ?>

@@ -124,3 +124,23 @@ function louerVoiture($idV)
         die(); // On arrête tout.
     }
 }
+
+function mesClients(){
+    require("modele/connectBD.php");
+    $sql = "SELECT u.nom FROM utilisateur u";
+    try {
+        $commande = $pdo->prepare($sql);
+        $bool = $commande->execute();
+        $user = array();
+        if ($bool) {
+            while ($c = $commande->fetch()) {
+                $user[] = $c; //stockage dans $C des enregistrements sélectionnés
+            }
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die(); // On arrête tout.
+    }
+    return $user;
+}
+

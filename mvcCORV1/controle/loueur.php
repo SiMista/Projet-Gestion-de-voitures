@@ -58,3 +58,10 @@ function nouvelleVoiture()
 		}
 	}
 }
+function getfactures(){
+	$nomC = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+	require ("modele/loueurBD.php");
+	$factures = facture($nomC);
+	require ("vue/loueur/facture.html");
+}
+?>
