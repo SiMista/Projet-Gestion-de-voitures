@@ -3,16 +3,21 @@
 
 #boxes{
 	position: inherit;
+	background-color: rgb(48, 185, 140);
 }
+
 #boxes:hover {
-	background-color: gray;
+	background-color: rgb(43, 167, 125);
 }
-.row{
-	margin: 0;
-	padding: 0;
+
+
+
+#blocPrincipal{
+	background-color: rgb(52, 196, 148);
 }
+
 .formulaire{
-	background-color: rgb(35, 52, 63);
+	background-color: rgb(44, 68, 83);
 	color: white;
 	margin: 0 auto;
 	text-align: center;
@@ -41,6 +46,12 @@
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.row{
+	margin: 0;
+	padding: 0;
+
 }
 
 input{

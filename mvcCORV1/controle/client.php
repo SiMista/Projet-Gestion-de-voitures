@@ -16,7 +16,7 @@ function voituresDisponible(){
 function mesVoitures(){
 	require ("modele/clientBD.php") ;
 	$Voitures = voitures();
-	require ("vue/client/mesVehicules.html");
+	require ("vue/client/mesVoitures.html");
 }
 
 function louer(){

@@ -16,14 +16,15 @@
 
 	<header>
 		<div id="menu">
-			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+			<nav id="nav" class="navbar navbar-expand-lg navbar-light">
+				<a href="index.php"><img src='./vue/images/header/logo.png' id="logo"></a>
 				<div class="container-fluid">
-					<a href="index.php"><img src='./vue/images/header/logo.png' id="logo"></a>
+					
 
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
 							<a class="nav-link active" onclick="AfficherConnexion()" href="#"
-								id="connexion">Connexion</a>
+								id="item">Connexion</a>
 
 						</li>
 						<li class="nav-item">
@@ -59,7 +60,7 @@
 			</nav>
 			<div id="formConnex" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4">
 				<form action="index.php?controle=utilisateur&action=ident" method="post">
-					<a class="fermer" onclick="AfficherConnexion()" href="#" id="connexion">x</a>
+					<a class="fermer" onclick="AfficherConnexion()" href="#" id="item">x</a>
 					<h1>Connexion</h1>
 					<p>
 						<?php echo $_SESSION['msgCo']; $_SESSION['msgCo']=''?>
@@ -73,7 +74,7 @@
 			</div>
 			<div id="formInscri" class="formulaire col-lg-4 col-md-4 col-sm-8 +col-xs-4">
 				<form action="index.php?controle=utilisateur&action=inscri" method="post">
-					<a class="fermer" onclick="AfficherInscription()" href="#" id="connexion">x</a>
+					<a class="fermer" onclick="AfficherInscription()" href="#" id="item">x</a>
 					<h1>Inscription</h1>
 					<p>
 						<?php echo $_SESSION['msgIns']; $_SESSION['msgIns']=''?>
@@ -88,10 +89,6 @@
 					<input name="mdp" id="mdp" class="mdp" value="" required/> <br></br>
 					<input type="submit" value="Valider" />
 				</form>
-				<script>
-					
-					
-				</script>
 			</div>
 		</div>
 
@@ -100,13 +97,13 @@
 	<div>
 		<img id="img-fond" src="./vue/images/carbackground.jpg" class="img-fluid" alt="Responsive image">
 	</div>
-	<!-- On peut surement utiliser base de données pour factoriser -->
+	<h1 class="nomCo">Venez vivre la vida loca</h1>
 	<div> 
 		<?php
 		if (isset ($VoituresDispo)) {
 			echo 
 			'<div class="flex-container">
-				<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
+				<div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > ';
 					foreach ($VoituresDispo as $c) {
 						$obj = json_decode($c['caract']);
 						echo '
