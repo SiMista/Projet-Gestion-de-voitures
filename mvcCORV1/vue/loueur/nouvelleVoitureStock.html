@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Stock de voitures</title>
+    <title>Ajout de voiture</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,21 +13,20 @@
 </head>
 
 <body>
-
     <header>
         <div id="menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+			<nav id="nav" class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <a href="index.php?controle=loueur&action=accueil"><img src='./vue/images/header/logo.png'
                             id="logo"></a>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.php?controle=loueur&action=monStock"
-                                id="connexion">Mon stock 🔑</a>
+                                id="item">Mon stock 🔑</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="index.php?controle=loueur&action=nouvelleVoiture"
-                                id="connexion">Nouvelle voiture 🚙</a>
+                                id="item">Nouvelle voiture 🚙</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="index.php?controle=utilisateur&action=deconnexion"
@@ -40,45 +39,57 @@
     </header>
     <div>
         <img id="img-fond" src="./vue/images/carbackground.jpg" class="img-fluid" alt="Responsive image">
-        <h1 class="nomCo">Mon stock de voitures</h1>
+        <h1 class="nomCo">Ajouter une nouvelle voiture</h1>
     </div>
 
-    <div >
+    <div id="formAjoutVoiture">
         <form action="" method="post">
-            <div class="form-example">
+            <div class="form-group">
                 <label for="typeV">Modèle de la voiture : </label>
                 <input type="text" name="typeV" id="typeV" required>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="prix">Prix de la location par jour (en €) : </label>
                 <input type="number" name="prix" id="prix" required>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="nombre">Nombre de modèles disponibles : </label>
                 <input type="number" name="nombre" id="nombre" required>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="categorie">Catégorie : </label>
-                <input type="text" name="categorie" id="categorie" required>
+                <select class="form-control" type="text" name="categorie" id="categorie" required>
+                    <option>SUV</option>
+                    <option>berline</option>
+                    <option>citadine</option>
+                    <option>polyvalente</option>
+                </select>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="moteur">Moteur : </label>
-                <input type="text" name="moteur" id="moteur" required>
+                <select class="form-control" type="text" name="moteur" id="moteur" required>
+                    <option>diesel</option>
+                    <option>essence</option>
+                    <option>electrique</option>
+                </select>    
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="vitesse">Boîte de vitesse : </label>
-                <input type="text" name="vitesse" id="vitesse" required>
+                <select class="form-control" type="text" name="vitesse" id="vitesse" required>
+                    <option>manuelle</option>
+                    <option>automatique</option>
+                </select>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="nbPlaces">Nombre de places : </label>
                 <input type="number" name="nbPlaces" id="nbPlaces" required>
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="photo">Photo : </label>
                 <input type="file" name="photo" id="photo" required>
             </div>
-            <div class="form-example">
-                <input type="submit" value="Ajouter la voiture">
+            <div class="form-group">
+                <input class="btn btn-dark btn-lg btn-block" type="submit" value="Ajouter la voiture">
             </div>
         </form>
     </div>

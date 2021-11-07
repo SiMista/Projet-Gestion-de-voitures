@@ -45,6 +45,7 @@ function nouvelleVoiture()
 	$vitesse = isset($_POST['vitesse']) ? trim($_POST['vitesse']) : '';
 	$nbPlaces = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	$photo = isset($_POST['photo']) ? trim($_POST['photo']) : '';
+	
 	require("modele/loueurBD.php");
 	if (count($_POST) === 0) require("vue/loueur/nouvelleVoitureStock.html");
 	else {
