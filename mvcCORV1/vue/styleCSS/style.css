@@ -14,17 +14,18 @@
 
 #blocPrincipal{
 	background-color: rgb(52, 196, 148);
+	z-index: 1;
 }
 
 #formAjoutVoiture{
-	background-color: rgb(144, 190, 233);
+	background-color: rgb(52, 196, 148);
 	color: white;
 	padding:  4% 7% 4% 7%;	
 
 }
 
 .formulaire{
-	background-color: rgb(44, 68, 83);
+	background-color: rgb(52, 114, 129);
 	color: white;
 	margin: 0 auto;
 	text-align: center;
@@ -63,4 +64,9 @@
 
 input{
 	position: relative;
+}
+
+h2{
+	text-align: center;
+	margin-bottom: 30px;
 }

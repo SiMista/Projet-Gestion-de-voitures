@@ -43,7 +43,7 @@ function nouvelleVoiture()
 	$categorie = isset($_POST['categorie']) ? trim($_POST['categorie']) : '';
 	$moteur = isset($_POST['moteur']) ? trim($_POST['moteur']) : '';
 	$vitesse = isset($_POST['vitesse']) ? trim($_POST['vitesse']) : '';
-	$nbPlaces = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+	$nbPlaces = isset($_POST['nbPlaces']) ? trim($_POST['nbPlaces']) : '';
 	$photo = isset($_POST['photo']) ? trim($_POST['photo']) : '';
 	
 	require("modele/loueurBD.php");
