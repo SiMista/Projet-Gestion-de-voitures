@@ -2,7 +2,7 @@
 function voitures()
 {
     require("modele/connectBD.php");
-    $sql = "SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF  FROM facture f, voiture v
+    $sql = "SELECT v.type, v.nb, v.caract, v.photo, v.etatLocation, f.dateD, f.dateF, f.valeur  FROM facture f, voiture v
 		WHERE f.idClient=:idC AND f.idVoiture = v.idVoiture
         LIMIT 0,30";
     try {
@@ -25,7 +25,7 @@ function voitures()
 function voituresDispo()
 {
     require("modele/connectBD.php");
-    $sql = "SELECT v.idVoiture, v.type, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
+    $sql = "SELECT v.idVoiture, v.type, v.prix, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
         WHERE v.etatLocation = 'disponible' AND v.nb != 0";
     try {
         $commande = $pdo->prepare($sql);
@@ -43,10 +43,33 @@ function voituresDispo()
     return $Voitures;
 }
 
+function calculerValeur($idV, $dateD, $dateF){
+    require("modele/connectBD.php");
+    $sql = "SELECT v.prix FROM voiture v
+        WHERE v.idVoiture = $idV";
+    try {
+        $commande = $pdo->prepare($sql);
+        $bool = $commande->execute();
+        $valeur = 0;
+        $dateD = date_parse($dateD);
+        $dateF = date_parse($dateF);
+        $nbJours = $dateF['day'] - $dateD['day'];
+        if ($bool) {
+            $c = $commande->fetch();
+            $valeur = $c[0] * $nbJours;
+        }
+    }    
+    catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die(); // On arrête tout.
+    }
+    return $valeur;
+}
+
 function creerFacture($idV)
 {
     require("modele/connectBD.php");
-    $sql = ('INSERT INTO `facture` (`idClient`, `idVoiture`, `dateD`, `dateF`) VALUES (:idClient, :idVoiture, :dateD, :dateF)');
+    $sql = ('INSERT INTO `facture` (`idClient`, `idVoiture`, `valeur`, `dateD`, `dateF`) VALUES (:idClient, :idVoiture, :valeur, :dateD, :dateF)');
     try {
         $dateD = date('y-m-d');
         $dateF = date_parse($dateD);
@@ -68,9 +91,11 @@ function creerFacture($idV)
                 }
             }
         }
+        $valeur = calculerValeur($idV, $dateD, $dateF);
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idClient', $_SESSION['profil']['idClient']);
         $commande->bindParam(':idVoiture', $idV);
+        $commande->bindParam(':valeur', $valeur);
         $commande->bindParam(':dateD', $dateD);
         $commande->bindParam(':dateF', $dateF);
         $bool = $commande->execute();
