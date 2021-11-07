@@ -15,7 +15,7 @@
 
 	<header>
 		<div id="menu">
-			<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+			<nav id="nav" class="navbar navbar-expand-lg navbar-light">
 				<a href="index.php?controle=client&action=accueil"><img src='./vue/images/header/logo.png'
 					id="logo"></a>
 				<div class="container-fluid">
@@ -47,7 +47,7 @@
 				if (isset ($VoituresDispo)) {
 					echo 
 					'<div class="flex-container">
-						<div class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center" > ';
+						<div id="blocPrincipal" class="d-flex p-3 text-white row justify-content-center align-self-center" > ';
 							foreach ($VoituresDispo as $c) {
 								$obj = json_decode($c['caract']);
 								$dateD = date('Y-m-d');
@@ -82,7 +82,7 @@
 					echo '<div> Pas de voitures </div>';
 				}
 				?>
-				<div style="position: inherit;" class="d-flex p-3 bg-secondary text-white row justify-content-center align-self-center">
+				<div id="blocPrincipal" style="position: inherit;" class="d-flex p-3 text-white row justify-content-center align-self-center">
 					<input type="submit"  class="btn btn-warning btn-lg" name="formSubmit" value="LOUER" />
 				</div>
 				
