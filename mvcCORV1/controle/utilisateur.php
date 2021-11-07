@@ -17,10 +17,15 @@ function ident()
 	if (count($_POST) == 0) require("vue/utilisateur/pagep.html");
 	else {
 		require("./modele/utilisateurBD.php");
+		require("./modele/loueurBD.php");
 		if (verif_bd($email, $mdp, $profil)) {
 			$_SESSION['profil'] = $profil;
 			$_SESSION['pseudo']=$profil['pseudo'];
+			if(estUnLoueur()) {
+				$nexturl = "index.php?controle=loueur&action=accueil";
+			} else {
 			$nexturl = "index.php?controle=client&action=accueil";
+			}
 			header("Location:" . $nexturl);
 		} else {
 			$_SESSION['msgCo'] = "Utilisateur inconnu !";

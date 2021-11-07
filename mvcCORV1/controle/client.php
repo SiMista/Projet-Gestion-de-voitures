@@ -1,7 +1,7 @@
 <?php
 
 function voituresDisponible(){
-    require ("modele/voitureBD.php") ;
+    require ("modele/clientBD.php") ;
     return $VoituresDispo = voituresDispo();
 }
 
@@ -14,26 +14,22 @@ function accueil()
 }
 
 function mesVoitures(){
-	require ("modele/voitureBD.php") ;
+	require ("modele/clientBD.php") ;
 	$Voitures = voitures();
 	require ("vue/utilisateur/mesVehicules.html");
 }
 
 function louer(){
 	$Voitures = isset($_POST['checkboxVoiture']) ? ($_POST['checkboxVoiture']) : '';;
-	if(empty($Voitures)) {
-		echo("Vous n'avez pris aucune voiture ! C'est bien dommage...");
-	} 
-	else {
-		require ("modele/voitureBD.php") ;
-        require("loueur.php");
+	if(!empty($Voitures)) {
+		require ("modele/clientBD.php") ;
 		for($i=0; $i < count($Voitures); $i++) {
             creerFacture($Voitures[$i]);
 			louerVoiture($Voitures[$i]);
 		}
-		$nexturl = "index.php?controle=client&action=accueil";
-		header("Location:" . $nexturl);
 	}
+	$nexturl = "index.php?controle=client&action=accueil";
+	header("Location:" . $nexturl);
 }
 
 ?>
