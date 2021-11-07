@@ -26,7 +26,7 @@ function voituresDispo()
 {
     require("modele/connectBD.php");
     $sql = "SELECT v.idVoiture, v.type, v.prix, v.nb, v.caract, v.photo, v.etatLocation  FROM voiture v
-        WHERE v.etatLocation = 'disponible' AND v.nb != 0";
+        WHERE v.etatLocation = 'disponible' AND v.nb > 0";
     try {
         $commande = $pdo->prepare($sql);
         $bool = $commande->execute();
@@ -105,11 +105,6 @@ function creerFacture($idV, $dateF)
         $commande->bindParam(':dateD', $dateD);
         $commande->bindParam(':dateF', $dateF);
         $bool = $commande->execute();
-        if ($bool) {
-            while ($c = $commande->fetch()) {
-                $Voitures[] = $c; //stockage dans $C des enregistrements sélectionnés
-            }
-        }
     } catch (PDOException $e) {
         echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
         die(); // On arrête tout.
@@ -124,12 +119,6 @@ function louerVoiture($idV)
     try {
         $commande = $pdo->prepare($sql);
         $bool = $commande->execute();
-        $Voitures = array();
-        if ($bool) {
-            while ($c = $commande->fetch()) {
-                $Voitures[] = $c; //stockage dans $C des enregistrements sélectionnés
-            }
-        }
     } catch (PDOException $e) {
         echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
         die(); // On arrête tout.

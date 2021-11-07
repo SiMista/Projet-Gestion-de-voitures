@@ -48,6 +48,10 @@
                             $obj = json_decode($c['caract']);
                             echo '
                             <div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+								<form action="index.php?controle=loueur&action=gererStock" method="post">
+									<button type="submit" name="btnAjouter" class="btn btn-success btn-sm" value="'. utf8_encode($c['idVoiture']) .'">+</button>
+									<button type="submit" name="btnRetirer" class="btn btn-danger btn-sm" value="'. utf8_encode($c['idVoiture']) .'">-</button>
+								</form>
                                 <img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
                                 <p id="txt1">Modèle : '. utf8_encode($c['type']) . '</p>
 								<p id="txt1">Prix par jour : '. utf8_encode($c['prix']) . '€</p>
