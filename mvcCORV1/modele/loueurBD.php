@@ -136,7 +136,8 @@ function retirer($idV)
 }
 	function facture($nomC){
 		require("modele/connectBD.php");
-		$sql = "SELECT SUM(f.valeur) AS valeur, u.nom  FROM facture f, utilisateur u WHERE f.idClient = u.idClient	AND (SELECT MONTH(f.DateD) = :date) AND u.nom = :nomC";
+		$sql = "SELECT SUM(f.valeur) AS valeur, u.nom, COUNT(f.IdFacture) AS nbFactures FROM facture f, utilisateur u 
+		WHERE f.idClient = u.idClient	AND (SELECT MONTH(f.DateD) = :date) AND u.nom = :nomC";
 		try {
 			$dateJ = date('Y-m-d') ;
 			$date = date_parse($dateJ);
