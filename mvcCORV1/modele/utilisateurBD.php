@@ -1,10 +1,5 @@
 ﻿<?php
-	/*Fonctions-modèle réalisant les requètes de gestion des utilisateurs en base de données*/
-	
-	// verif_bd : fonction booléenne. 
-	// Si vraie, alors le profil de l'utilisateur est affecté en sortie à $profil
-	
-	
+
 	function verif_bd($email,$mdp,&$profil) {
 		require('modele/connectBD.php');
 		$sql="SELECT * FROM `utilisateur` WHERE email=:email AND mdp=:mdp";
@@ -27,7 +22,6 @@
 		}
 		else {
 			$profil = $resultat[0];
-			//var_dump($profil);
 			return true;
 		}
 	}
@@ -72,10 +66,6 @@
             $bool = $commande->execute();
             if ($bool) {
                 $resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
-                // var_dump($resultat); die();
-                /*while ($ligne = $commande->fetch()) { // ligne par ligne
-                    print_r($ligne);
-                }*/
             }
         }
         catch (PDOException $e) {
@@ -88,7 +78,6 @@
         }
         else {
             $profil = $resultat[0];
-            //var_dump($profil);
             return true;
         }
     }
