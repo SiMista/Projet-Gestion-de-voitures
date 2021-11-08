@@ -31,12 +31,17 @@
 	text-align: center;
 	height: auto;
 	display: none;
-	margin-top: 10%;
+	margin-top: 3%;
 	backdrop-filter: contrast(40%);
 	border-radius: 5%;
 	padding-top: 2%;
 	padding-bottom: 2%;
 }
+
+#formConnex{
+	margin-top: 7%;
+}
+
 .fermer{
 	position: fixed;
 	margin-left: 45%;

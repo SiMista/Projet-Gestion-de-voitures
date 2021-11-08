@@ -20,7 +20,7 @@ function ident()
 	else {
 		require("./modele/utilisateurBD.php");
 		require("./modele/loueurBD.php");
-		if (verif_bd($email, $mdp, $profil)) {
+		if (verif_bd($email, sha1($mdp), $profil)) {
 			$_SESSION['profil'] = $profil;
 			$_SESSION['pseudo']=$profil['pseudo'];
 			if(estUnLoueur()) {
@@ -43,14 +43,14 @@ function inscri()
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 	$mdp = isset($_POST['mdp']) ? trim($_POST['mdp']) : '';
-	$nomE = "";
-	$adresseE = "";
+	$nomE = isset($_POST['nomE']) ? trim($_POST['nomE']) : '';
+	$adresseE = isset($_POST['adresseE']) ? trim($_POST['adresseE']) : '';
 	$_SESSION['msgIns'] = "";
 
 	require("./modele/utilisateurBD.php");
 	if (!verif_email($email, $profil)) {
-		inscription($nom, $pseudo, $email, $mdp, $nomE, $adresseE);
-		if (verif_bd($email, $mdp, $profil)) {
+		inscription($nom, $pseudo, $email, sha1($mdp), $nomE, $adresseE);
+		if (verif_bd($email, sha1($mdp), $profil)) {
 			$_SESSION['pseudo']=$pseudo;
 			$_SESSION['profil']=$profil;
 			setcookie("cookieUser", $profil['idClient'], time()+36000);
