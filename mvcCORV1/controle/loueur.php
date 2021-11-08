@@ -5,7 +5,7 @@ function accueil()
 	$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	$pseudo = isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 	$locationsEnCours = locationsEnCours();
-	require("vue/loueur/accueilLoueur.html");
+	require("vue/loueur/accueilLoueur.tpl");
 }
 
 function locationsEnCours()
@@ -18,7 +18,7 @@ function monStock()
 {
 	require("modele/loueurBD.php");
 	$stock = stock();
-	require("vue/loueur/monStock.html");
+	require("vue/loueur/monStock.tpl");
 }
 
 function gererStock()
@@ -47,14 +47,14 @@ function nouvelleVoiture()
 	$photo = isset($_POST['photo']) ? trim($_POST['photo']) : '';
 	
 	require("modele/loueurBD.php");
-	if (count($_POST) === 0) require("vue/loueur/nouvelleVoitureStock.html");
+	if (count($_POST) === 0) require("vue/loueur/nouvelleVoitureStock.tpl");
 	else {
 		if (!verif_voiture($typeV)) {
 			creerVoiture($typeV, $prix, $nb, $categorie, $moteur, $vitesse, $nbPlaces, $photo);
 			$nexturl = "index.php?controle=loueur&action=accueil";
 			header("Location:" . $nexturl);
 		} else {
-			require("vue/loueur/nouvelleVoitureStock.html");
+			require("vue/loueur/nouvelleVoitureStock.tpl");
 		}
 	}
 }
@@ -62,6 +62,6 @@ function getfactures(){
 	$nomC = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 	require ("modele/loueurBD.php");
 	$factures = facture($nomC);
-	require ("vue/loueur/facture.html");
+	require ("vue/loueur/facture.tpl");
 }
 ?>

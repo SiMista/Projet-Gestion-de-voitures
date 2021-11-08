@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 07 nov. 2021 à 22:20
+-- Généré le : lun. 08 nov. 2021 à 01:47
 -- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 8.0.10
+-- Version de PHP : 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,12 +42,11 @@ CREATE TABLE `facture` (
 --
 
 INSERT INTO `facture` (`idFacture`, `idClient`, `idVoiture`, `dateD`, `dateF`, `valeur`, `etatReglement`) VALUES
-(12, 2, 3, '2021-11-07', '2021-11-30', 687.7, 0),
-(13, 2, 1, '2021-11-07', '2021-11-30', 1035, 0),
-(14, 2, 2, '2021-11-07', '2021-11-30', 864.8, 0),
-(15, 2, 1, '2021-11-07', '2021-11-30', 1035, 0),
-(16, 2, 1, '2021-11-07', '2021-11-30', 1035, 0),
-(17, 2, 1, '2021-11-07', '2021-11-30', 1035, 0);
+(1, 2, 4, '2021-11-10', '2021-11-13', 70.5, 0),
+(2, 2, 3, '2021-11-21', '2021-11-27', 179.4, 0),
+(3, 3, 6, '2021-12-08', '2021-12-22', 221.06, 0),
+(4, 3, 4, '2021-11-16', '2021-11-25', 211.5, 0),
+(5, 2, 1, '2021-11-28', '2021-11-30', 90, 0);
 
 -- --------------------------------------------------------
 
@@ -87,14 +86,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idClient`, `nom`, `pseudo`, `mdp`, `email`, `nomE`, `adresseE`) VALUES
-(1, 'Simeon', 'SiMista', 'Jojo', 'sisilamif@gmail.com', 'Sixt', 'sixt@gmail.com'),
-(2, 'Jules', 'Julio', 'Laylow', 'julio@hotmail.fr', 'Hertz', 'Hertz@hotmail.fr'),
-(3, 'Leo', 'Leolio', 'BigDrip', 'leocha@gmail.com', 'RentalCars', 'rental@gmail.com'),
-(10, 'Berger', 'b', 'b', 'b', '', ''),
-(11, 'khki', 'kikhk', 'kihki', 'hikihkh', '', ''),
-(12, 'dfggdr', 'gdrgrgd', 'grdg', 'grdg', '', ''),
-(13, 'dzqdzq', 'dzqdqzdzq', 'zqdqzd', 'pon@qdzq', '', ''),
-(14, 'aaaa', 'a', '7', 'a@a.a', '', '');
+(1, 'Simeon', 'SiMista', '554baf7abd58c8789233fcc0e781f0a9cb20a0a5', 'sisilmf@gmail.com', 'Sixt', 'sixt@gmail.com'),
+(2, 'Jules', 'Julio', 'a4e430be40289d926503146438f42ff5f1396161', 'julio@hotmail.fr', 'Hertz', 'Hertz@hotmail.fr'),
+(3, 'Leo', 'Leolio', '0aa95006acc9817fd7f1ef5b9dfded266515e7da', 'leocha@gmail.com', 'RentalCars', 'rental@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -117,9 +111,12 @@ CREATE TABLE `voiture` (
 --
 
 INSERT INTO `voiture` (`idVoiture`, `typeV`, `prix`, `nb`, `caract`, `photo`, `etatLocation`) VALUES
-(1, 'Opel Zafira', 45, 63, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
-(2, 'Renault Espace', 37.6, 19, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'disponible'),
-(3, 'Tesla Model S', 29.9, 10, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible');
+(1, 'Opel Zafira', 45, 7, '{\"categorie\" : \"SUV\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"7\"}', 'zafira.png', 'disponible'),
+(2, 'Renault Espace', 37.6, 19, '{\"categorie\" : \"SUV\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'espace.png', 'en_revision'),
+(3, 'Tesla Model S', 29.9, 10, '{\"categorie\" : \"polyvalent\", \"moteur\" :\"electrique\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'teslaS.png', 'disponible'),
+(4, 'Peugeot 208', 23.5, 5, '{\"categorie\" : \"citadine\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"5\"}', 'peugeot208.png', 'disponible'),
+(5, 'Toyota Yaris', 20.5, 12, '{\"categorie\" : \"citadine\", \"moteur\" :\"essence\", \"vitesse\":\"automatique\", \"nbPlaces\" :\"5\"}', 'toyotaYaris.png', 'en_revision'),
+(6, 'Fiat 500', 15.79, 10, '{\"categorie\" : \"citadine\", \"moteur\" :\"diesel\", \"vitesse\":\"manuelle\", \"nbPlaces\" :\"5\"}', 'fiat500.png', 'disponible');
 
 --
 -- Index pour les tables déchargées
@@ -160,19 +157,19 @@ ALTER TABLE `voiture`
 -- AUTO_INCREMENT pour la table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `idFacture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idFacture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idClient` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `voiture`
 --
 ALTER TABLE `voiture`
-  MODIFY `idVoiture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idVoiture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,7 +6,7 @@
 function pagep(){
 	require("client.php");
 	$VoituresDispo = voituresDisponible();
-	require("vue/pagep.html");
+	require("vue/pagep.tpl");
 }
 
 function ident()

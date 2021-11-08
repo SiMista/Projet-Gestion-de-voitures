@@ -105,6 +105,9 @@ function creerFacture($idV, $dateF)
         $commande->bindParam(':dateD', $dateD);
         $commande->bindParam(':dateF', $dateF);
         $bool = $commande->execute();
+        if ($bool) {
+            $c = $commande->fetch();
+        }
     } catch (PDOException $e) {
         echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
         die(); // On arrête tout.

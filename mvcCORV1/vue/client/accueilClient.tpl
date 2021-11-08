@@ -42,7 +42,6 @@
 	<div>
 		<form action="index.php?controle=client&action=louer" method="post" style="margin: 0%;">
 			<div>
-
 				<?php
 				if (isset ($VoituresDispo)) {
 					echo 
@@ -51,16 +50,17 @@
 							foreach ($VoituresDispo as $c) {
 								$obj = json_decode($c['caract']);
 								$dateD = date('Y-m-d');
+								$i = 1;
 								echo '
 								<div id="boxes" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 									<label class="btn btn-danger form-check-label">
 										<input type="checkbox" name="checkboxVoiture[]" class="form-check-input" value="'. utf8_encode($c['idVoiture']) .'" autocomplete="off">Sélectionner
 									</label>			
-									<label>Date de début de réservation :
+									<label>Début de réservation :
 										<input type="date" name="dateD" min="' . $dateD . '" value="' . $dateD . '" disabled>
 									</label>
-									<label>Date de fin de réservation :  
-										<input type="date" name="dateF" min = "'. $dateD.'">
+									<label>Fin de réservation :
+										<input type="date" name="dateF[]" value="" min = "'. $dateD.'">
 									</label>
 									<img id="zoom" src="./vue/images/'. utf8_encode($c['photo']) . '"  style="max-height:200px" class="img-fluid" alt="Responsive image">
 									<p id="txt1">Modèle : '. utf8_encode($c['typeV']) . '</p>
@@ -72,6 +72,7 @@
 									<p id="txt1">Nombre de places : '. $obj->nbPlaces . '</p>
 								</div>
 								';
+								$i = $i + 1;
 							}
 						echo '
 						</div>
@@ -85,7 +86,6 @@
 				<div id="blocPrincipal" style="position: inherit;" class="d-flex p-3 text-white row justify-content-center align-self-center">
 					<input type="submit"  class="btn btn-warning btn-lg" name="formSubmit" value="LOUER" />
 				</div>
-				
 			</div>
 		</form>
 	</div>

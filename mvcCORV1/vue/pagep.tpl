@@ -68,7 +68,7 @@
 					<p>Email : </p>
 					<input name="email" value="" type="email" required/>
 					<p>Mot de passe : </p>
-					<input name="mdp" value="" required/> <br></br>
+					<input type="password" name="mdp" value="" required/> <br></br>
 					<input class="btn btn-outline-light" type="submit" value="Se connecter" /> <br></br>
 				</form>
 			</div>
@@ -86,7 +86,7 @@
 					<p>Email : </p>
 					<input name="email" id="email" value="" type="email" required />
 					<p>Mot de passe : </p>
-					<input name="mdp" id="mdp" value="" required/> 
+					<input type="password" name="mdp" id="mdp" value="" required/> 
 					<p>Nom de l'entreprise : </p>
 					<input name="nomE" id="nomE"/>
 					<p>Adresse de l'entreprise : </p>
